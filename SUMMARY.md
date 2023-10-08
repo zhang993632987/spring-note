@@ -3,12 +3,12 @@
 ## 基础知识 <a href="#basic" id="basic"></a>
 
 * [Spring核心](README.md)
-  * [1. 依赖注入（DI）](basic/spring-he-xin/1.-yi-lai-zhu-ru-di/README.md)
-    * [1.1 Spring容器](basic/spring-he-xin/1.-yi-lai-zhu-ru-di/1.1-spring-rong-qi.md)
-    * [1.2 装配](basic/spring-he-xin/1.-yi-lai-zhu-ru-di/1.2-zhuang-pei.md)
-    * [1.3 bean的作用域](basic/spring-he-xin/1.-yi-lai-zhu-ru-di/1.3-bean-de-zuo-yong-yu.md)
-  * [2 bean的生命周期](basic/spring-he-xin/2-bean-de-sheng-ming-zhou-qi.md)
-  * [3 面向切面编程](basic/spring-he-xin/3-mian-xiang-qie-mian-bian-cheng.md)
+  * [1. 依赖注入（DI）](basic/core/1.-yi-lai-zhu-ru-di/README.md)
+    * [1.1 Spring容器](basic/core/1.-yi-lai-zhu-ru-di/1.1-spring-rong-qi.md)
+    * [1.2 装配](basic/core/1.-yi-lai-zhu-ru-di/1.2-zhuang-pei.md)
+    * [1.3 bean的作用域](basic/core/1.-yi-lai-zhu-ru-di/1.3-bean-de-zuo-yong-yu.md)
+  * [2 bean的生命周期](basic/core/2-bean-de-sheng-ming-zhou-qi.md)
+  * [3 面向切面编程](basic/core/3-mian-xiang-qie-mian-bian-cheng.md)
 * [Spring MVC](basic/spring-mvc/README.md)
   * [1 Spring MVC请求的处理流程](basic/spring-mvc/1-spring-mvc-qing-qiu-de-chu-li-liu-cheng.md)
   * [2 搭建Spring MVC](basic/spring-mvc/2-da-jian-spring-mvc.md)
