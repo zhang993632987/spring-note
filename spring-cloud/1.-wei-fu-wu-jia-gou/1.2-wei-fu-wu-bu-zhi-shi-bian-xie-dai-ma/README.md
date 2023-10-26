@@ -2,7 +2,7 @@
 
 尽管构建单个微服务的概念很易于理解，但运行和支持健壮的微服务应用程序（尤其是在云中运行）不只是涉及为服务编写代码。下图展示了在编写或构建微服务时需要考虑的一些准则：
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * <mark style="color:blue;">**大小适当**</mark>——如何确保微服务的大小适当，这样才不会让微服务承担太多的职责。服务大小适当，就能快速更改应用程序，降低整个应用程序中断的总体风险。
 * <mark style="color:blue;">**位置透明**</mark>——如何管理服务调用的物理细节。在一个微服务应用程序中，多个服务实例可以快速启动和关闭。
