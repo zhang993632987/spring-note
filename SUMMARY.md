@@ -60,5 +60,4 @@
     * [3.2 集成swagger](spring-cloud/3.-shi-yong-spring-boot-gou-jian-wei-fu-wu/3.2-ji-cheng-swagger.md)
     * [3.3 添加国际化支持](spring-cloud/3.-shi-yong-spring-boot-gou-jian-wei-fu-wu/3.3-tian-jia-guo-ji-hua-zhi-chi.md)
     * [💔 3.4 集成Spring HATEOAS(失败)](spring-cloud/3.-shi-yong-spring-boot-gou-jian-wei-fu-wu/3.4-ji-cheng-spring-hateoas-shi-bai.md)
-    * [3.3 集成docker](spring-cloud/3.-shi-yong-spring-boot-gou-jian-wei-fu-wu/3.3-ji-cheng-docker/README.md)
-      * [3.3.1 构建docker镜像](spring-cloud/3.-shi-yong-spring-boot-gou-jian-wei-fu-wu/3.3-ji-cheng-docker/3.3.1-gou-jian-docker-jing-xiang.md)
+    * [3.3 集成docker](spring-cloud/3.-shi-yong-spring-boot-gou-jian-wei-fu-wu/3.3-ji-cheng-docker.md)
