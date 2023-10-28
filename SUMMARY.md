@@ -66,6 +66,6 @@
     * [4.2 构建Config服务端](spring-cloud/4.-spring-cloud-config/4.2-gou-jian-config-fu-wu-duan/README.md)
       * [4.2.1 本地文件系统](spring-cloud/4.-spring-cloud-config/4.2-gou-jian-config-fu-wu-duan/4.2.1-ben-di-wen-jian-xi-tong.md)
       * [4.2.2 Git](spring-cloud/4.-spring-cloud-config/4.2-gou-jian-config-fu-wu-duan/4.2.2-git.md)
-      * [Page 3](spring-cloud/4.-spring-cloud-config/4.2-gou-jian-config-fu-wu-duan/page-3.md)
     * [4.3 Spring Boot客户端集成Config服务](spring-cloud/4.-spring-cloud-config/4.3-spring-boot-ke-hu-duan-ji-cheng-config-fu-wu.md)
     * [4.4 刷新属性](spring-cloud/4.-spring-cloud-config/4.4-shua-xin-shu-xing.md)
+    * [4.5 保护敏感配置信息](spring-cloud/4.-spring-cloud-config/4.5-bao-hu-min-gan-pei-zhi-xin-xi.md)
