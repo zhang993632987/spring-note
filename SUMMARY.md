@@ -69,3 +69,5 @@
     * [4.3 Spring Boot客户端集成Config服务](spring-cloud/4.-spring-cloud-config/4.3-spring-boot-ke-hu-duan-ji-cheng-config-fu-wu.md)
     * [4.4 刷新属性](spring-cloud/4.-spring-cloud-config/4.4-shua-xin-shu-xing.md)
     * [4.5 保护敏感配置信息](spring-cloud/4.-spring-cloud-config/4.5-bao-hu-min-gan-pei-zhi-xin-xi.md)
+  * [5. 服务发现Eureka](spring-cloud/5.-fu-wu-fa-xian-eureka/README.md)
+    * [5.2 构建Eureka服务端](spring-cloud/5.-fu-wu-fa-xian-eureka/5.2-gou-jian-eureka-fu-wu-duan.md)
