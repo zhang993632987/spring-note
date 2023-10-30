@@ -76,3 +76,4 @@
       * [5.4.1 使用Spring Discovery Client查找服务实例](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.1-shi-yong-spring-discovery-client-cha-zhao-fu-wu-shi-li.md)
       * [5.4.2 使用带有Load Balancer功能的RestTemplate调用服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.2-shi-yong-dai-you-load-balancer-gong-neng-de-resttemplate-tiao-yong-fu-wu.md)
       * [5.4.3 使用Netflix Feign客户端调用服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.3-shi-yong-netflix-feign-ke-hu-duan-tiao-yong-fu-wu.md)
+    * [5.5 集群](spring-cloud/5.-fu-wu-fa-xian-eureka/5.5-ji-qun.md)
