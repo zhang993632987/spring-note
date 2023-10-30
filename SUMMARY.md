@@ -72,3 +72,7 @@
   * [5. 服务发现Eureka](spring-cloud/5.-fu-wu-fa-xian-eureka/README.md)
     * [5.2 构建Eureka服务端](spring-cloud/5.-fu-wu-fa-xian-eureka/5.2-gou-jian-eureka-fu-wu-duan.md)
     * [5.3 客户端注册](spring-cloud/5.-fu-wu-fa-xian-eureka/5.3-ke-hu-duan-zhu-ce.md)
+    * [5.4 使用服务发现来查找服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/README.md)
+      * [5.4.1 使用Spring Discovery Client查找服务实例](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.1-shi-yong-spring-discovery-client-cha-zhao-fu-wu-shi-li.md)
+      * [5.4.2 使用带有Load Balancer功能的RestTemplate调用服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.2-shi-yong-dai-you-load-balancer-gong-neng-de-resttemplate-tiao-yong-fu-wu.md)
+      * [5.4.3 使用Netflix Feign客户端调用服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.3-shi-yong-netflix-feign-ke-hu-duan-tiao-yong-fu-wu.md)
