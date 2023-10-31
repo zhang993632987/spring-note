@@ -70,6 +70,7 @@
     * [4.4 刷新属性](spring-cloud/4.-spring-cloud-config/4.4-shua-xin-shu-xing.md)
     * [4.5 保护敏感配置信息](spring-cloud/4.-spring-cloud-config/4.5-bao-hu-min-gan-pei-zhi-xin-xi.md)
   * [5. 服务发现Eureka](spring-cloud/5.-fu-wu-fa-xian-eureka/README.md)
+    * [5.1 服务发现机制](spring-cloud/5.-fu-wu-fa-xian-eureka/5.1-fu-wu-fa-xian-ji-zhi.md)
     * [5.2 构建Eureka服务端](spring-cloud/5.-fu-wu-fa-xian-eureka/5.2-gou-jian-eureka-fu-wu-duan.md)
     * [5.3 客户端注册](spring-cloud/5.-fu-wu-fa-xian-eureka/5.3-ke-hu-duan-zhu-ce.md)
     * [5.4 使用服务发现来查找服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/README.md)
