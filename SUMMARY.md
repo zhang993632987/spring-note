@@ -78,3 +78,7 @@
       * [5.4.2 使用带有Load Balancer功能的RestTemplate调用服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.2-shi-yong-dai-you-load-balancer-gong-neng-de-resttemplate-tiao-yong-fu-wu.md)
       * [5.4.3 使用Netflix Feign客户端调用服务](spring-cloud/5.-fu-wu-fa-xian-eureka/5.4-shi-yong-fu-wu-fa-xian-lai-cha-zhao-fu-wu/5.4.3-shi-yong-netflix-feign-ke-hu-duan-tiao-yong-fu-wu.md)
     * [5.5 集群](spring-cloud/5.-fu-wu-fa-xian-eureka/5.5-ji-qun.md)
+  * [6. Resilience4j](spring-cloud/6.-resilience4j/README.md)
+    * [6.1 客户端弹性模式](spring-cloud/6.-resilience4j/6.1-ke-hu-duan-dan-xing-mo-shi.md)
+    * [6.2 客户端负载均衡模式](spring-cloud/6.-resilience4j/6.2-ke-hu-duan-fu-zai-jun-heng-mo-shi.md)
+    * [6.3 断路器模式](spring-cloud/6.-resilience4j/6.3-duan-lu-qi-mo-shi.md)
