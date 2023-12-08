@@ -2,9 +2,9 @@
 
 <mark style="color:blue;">**Resilience4j**</mark>是一个受Hystrix启发的容错库。它提供了以下模式，以提高网络问题或多个服务故障的容错能力：
 
-* <mark style="color:blue;">**断路器(Bulkhead)**</mark>——当被调用的服务发生失败时，停止发出请求。
+* <mark style="color:blue;">**断路器(CircuitBreaker)**</mark>——当被调用的服务发生失败时，停止发出请求。
 * <mark style="color:blue;">**重试(Retry)**</mark>——在服务暂时失败时重试服务。
-* <mark style="color:blue;">**舱壁(CircuitBreaker)**</mark>——限制传出的并发服务请求数以避免过载。
+* <mark style="color:blue;">**舱壁(Bulkhead)**</mark>——限制传出的并发服务请求数以避免过载。
 * <mark style="color:blue;">**限流(RateLimiter)**</mark>——限制一个服务在一定时间内接收的调用数。
 * <mark style="color:blue;">**后备**</mark>——为失败的请求设置备用路径。
 
