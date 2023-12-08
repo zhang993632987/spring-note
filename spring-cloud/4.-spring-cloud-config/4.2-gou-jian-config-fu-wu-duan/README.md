@@ -1,6 +1,8 @@
 # 4.2 构建Config服务端
 
-Spring Cloud Config服务器端是**基于REST**的应用程序，它建立在Spring Boot之上。Config 服务器端不必是一个独立的服务器端，相反，你可以选择将它**嵌入现有的Spring Boot应用程序**中，也可以开启新的Spring Boot项目然后嵌入Config服务器端。<mark style="color:orange;">**最佳实践是保持分离。**</mark>
+Spring Cloud Config服务器端是**基于REST**的应用程序，它建立在Spring Boot之上。
+
+Config 服务器端不必是一个独立的服务器端，相反，你可以选择将它**嵌入现有的Spring Boot应用程序**中，也可以开启新的Spring Boot项目然后嵌入Config服务器端。<mark style="color:orange;">**最佳实践是保持分离。**</mark>
 
 ## 1. 创建项目
 
