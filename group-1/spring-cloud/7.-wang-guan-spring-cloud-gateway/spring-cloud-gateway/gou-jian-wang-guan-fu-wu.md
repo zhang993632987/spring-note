@@ -43,9 +43,9 @@ spring:
 
 ## 3. 集成Eureka
 
-The Spring Cloud Gateway can integrate with the Netflix Eureka Discovery service.To add a new Gateway service, the first step is to create a configuration file for this service in the Spring Configuration Server repository. For this example, we’ve created the gateway-server.yml file.
+Spring Cloud Gateway可以与Netflix Eureka Discovery服务集成。要添加新的网关服务，第一步是在Spring配置服务器存储库中为此服务创建一个配置文件。对于这个示例，我们创建了gateway-server.yml文件。
 
-Next, we will add the Eureka configuration data into the configuration file we just created. The following listing shows how.
+接下来，我们将Eureka配置数据添加到刚刚创建的配置文件中：
 
 ```yaml
 server:
@@ -59,3 +59,5 @@ eureka:
     serviceUrl:
       defaultZone: http://192.168.10.110:8070/eureka/
 ```
+
+通过这样的配置，Spring Cloud Gateway将能够注册到Eureka服务注册中心，并发现其他服务的实例。

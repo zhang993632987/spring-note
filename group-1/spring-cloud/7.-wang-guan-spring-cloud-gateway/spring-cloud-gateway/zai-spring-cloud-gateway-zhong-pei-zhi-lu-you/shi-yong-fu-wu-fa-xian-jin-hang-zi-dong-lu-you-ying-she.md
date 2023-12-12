@@ -1,6 +1,8 @@
-# Automated mapping of routes via service discovery
+# 使用服务发现进行自动路由映射
 
-The SpringCloud Gateway can automatically route requests based on their service IDs by adding the following configurations to the gateway-server configuration file as shown in thefollowing listing.
+## 配置
+
+Spring Cloud Gateway可以根据服务ID自动路由请求，只需将以下配置添加到gateway-server的配置文件中，如下所示：
 
 ```yaml
 spring:
@@ -13,21 +15,21 @@ spring:
           lowerCaseServiceId: true
 ```
 
-By adding the lines in listing 8.5, the Spring Cloud Gateway automatically uses the Eureka service ID of the service being called and maps it to a downstream service instance. For instance, if we want to call our organization service and use automated routing via the Spring Cloud Gateway, we would have our client call the Gateway service instance using the following URL as the endpoint:
+通过添加以上配置，Spring Cloud Gateway将自动使用被调用服务的Eureka服务ID，并将其映射到下游服务实例。例如，如果我们想要调用我们的 organization 服务并通过Spring Cloud Gateway进行自动路由，我们将让客户端使用以下URL调用网关服务实例端点：
 
 ```properties
 http://localhost:8072/organization-service/v1/organization/100
 ```
 
-The Gateway server is accessed via the http://localhost:8072 endpoint. The service we want to invoke (the organization service) is represented by the first part of the endpoint path in the service.Figure 8.5 illustrates this mapping in action.
+在这里，网关服务器通过 **http://localhost:8072** 端点访问。我们想要调用的服务（organization 服务）由端点路径中的第一部分表示。下图展示了这个映射的实际情况。
 
-<figure><img src="../../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-The beauty of using Spring Cloud Gateway with Eureka is that not only do we now have a single endpoint through which we can make calls, but we can also add and remove instances of a service without ever having to modify the gateway.
+使用Spring Cloud Gateway与Eureka的美妙之处在于，我们不仅可以通过单一端点进行调用，而且还可以添加和删除服务的实例，而无需修改网关。
 
 ## Actuator 查询
 
-If we want to see the routes managed by the Gateway server, we can list the routes via the actuator/gateway/routes endpoint on the Gateway server. This will return a listing of all the mappings on our service.
+如果我们想查看由网关服务器管理的路由，可以通过在网关服务器上使用**actuator/gateway/routes**端点列出路由。这将返回我们服务上所有映射的列表：
 
 <details>
 

@@ -1,11 +1,8 @@
 # 7. 网关Spring Cloud Gateway
 
-In a distributed architecture like a microservice, there will come a point where we’ll need to ensure that critical behaviors such as security, logging, and tracking users across multiple service calls occur. To implement this functionality, we’ll want these attributes to be consistently enforced across all of our services without the need for each individual development team to build their own solution. While it’s possible to use a common library or framework to assist with building these capabilities directly in an individual service, doing so has these implications:
+在分布式架构中，例如微服务，总会出现需要确保安全性、日志记录以及跟踪用户在多个服务调用中的行为等关键行为的情况。为了实现这些功能，我们希望能够在所有服务中一致地强制执行这些属性，而无需每个开发团队构建自己的解决方案。虽然在单个服务中直接构建这些能力可能通过<mark style="color:blue;">**使用共同的库或框架**</mark>来实现，但这种方法存在以下问题：
 
-It’s challenging to implement these capabilities in each service consistently. Developers are focused on delivering functionality, and in the whirlwind of day-to-day activity, they can easily forget to implement service logging or tracking unless they work in a regulated industry where it’s required.
+* 在每个服务中一致地实现这些功能是一项具有挑战性的任务。开发人员通常专注于交付功能，而在日常工作的快节奏中，他们可能会轻易忘记实施服务日志记录或跟踪，除非他们在需要的受监管行业工作。
+* 在所有服务之间创建硬依赖关系可能会导致问题。<mark style="color:blue;">**随着将更多功能构建到通用框架中，要在不重新编译和重新部署所有服务的情况下更改或添加共享代码的行为变得越来越困难。**</mark>突然之间，对嵌入到共享库中的核心功能进行升级可能变成漫长的迁移过程。
 
-Pushing the responsibilities to implement cross-cutting concerns like security and logging down to the individual development teams greatly increases the odds that someone will not implement them properly or will forget to do them.
-
-It’s possible to create a hard dependency across all our services. The more capabilities we build into a common framework shared across all our services, the more difficult it is to change or add behavior in our common code without having to recompile and redeploy all our services. Suddenly an upgrade of core capabilities built into a shared library becomes a long migration process.
-
-To solve this problem, we need to abstract these cross-cutting concerns into a service that can sit independently and act as a filter and router for all the microservice calls in our architecture. We call this service a gateway. Our service clients no longer directly call a microservice. Instead, all calls are routed through the service gateway, which acts as a single Policy Enforcement Point (PEP), and are then routed to a final destination.
+为了解决这个问题，我们需要<mark style="color:blue;">**将这些横切关注点抽象为一个能够独立存在的服务**</mark>。这个服务充当**过滤器**和**路由器**，负责所有微服务调用。我们称之为<mark style="color:blue;">**网关**</mark>。现在，我们的<mark style="color:blue;">**服务客户端不再直接调用微服务，而是通过服务网关进行路由。服务网关充当单一的策略执行点（Policy Enforcement Point，PEP），然后将调用路由到最终目的地。**</mark>这样一来，我们能够在整个架构中实现一致的安全性、日志记录和其他关键功能，而无需依赖各个开发团队自行实施。

@@ -1,11 +1,11 @@
 # Spring Cloud Gateway
 
-This gateway is a nonblocking gateway. What does nonblocking mean? Nonblocking applications are written in such a way that the main threads are never blocked. Instead, these threads are always available to serve requests and to process them asynchronously in the background to return a response once processing is done.&#x20;
+这个网关是一个<mark style="color:blue;">**非阻塞网关**</mark>。非阻塞指的是主线程永远不会被阻塞，主线程始终可用来服务请求，并以异步的方式在后台处理请求，一旦处理完成就返回响应。
 
-Spring Cloud Gateway offers several capabilities, including:
+Spring Cloud Gateway提供了多项功能，其中包括：
 
-Mapping the routes for all the services in your application to a single URL. The Spring Cloud Gateway isn’t limited to a single URL, however. Actually, with it, we can define multiple route entry points, making route mapping extremely fine-grained (each service endpoint gets its own route mapping).&#x20;
+1. <mark style="color:blue;">**将应用程序中所有服务的路由映射到单个URL**</mark>**：** 虽然Spring Cloud Gateway并不限制于单个URL。事实上，我们**可以定义多个路由入口点，从而实现非常细粒度的路由映射**（每个服务端点都有自己的路由映射）。
+2. <mark style="color:blue;">**构建过滤器**</mark>**：** 这些过滤器能够检查和处理通过网关的请求和响应。通过这些过滤器，我们能够在代码中注入策略执行点，并以一致的方式对所有服务调用执行多种操作，换句话说，这些**过滤器允许我们修改传入和传出的HTTP请求和响应。**
+3. <mark style="color:blue;">**构建谓词**</mark>**：** 这是一些对象，允许我们**在执行或处理请求之前检查请求是否满足一组给定的条件**。Spring Cloud Gateway包含一系列内置的路由谓词工厂。
 
-Building filters that can inspect and act on the requests and responses coming through the gateway. These filters allow us to inject policy enforcement points in our code and to perform a wide number of actions on all of our service calls in a consistent fashion. In other words, these filters allow us to modify the incoming and outgoing HTTP requests and responses.
-
-Building predicates, which are objects that allow us to check if the requests fulfill a set of given conditions before executing or processing a request. The Spring Cloud Gateway includes a set of built-in Route Predicate Factories.
+总体而言，Spring Cloud Gateway通过提供**非阻塞的请求处理机制**、**路由映射**、**过滤器**和**谓词**等功能，为构建灵活而高效的微服务网关提供了强大的工具。
