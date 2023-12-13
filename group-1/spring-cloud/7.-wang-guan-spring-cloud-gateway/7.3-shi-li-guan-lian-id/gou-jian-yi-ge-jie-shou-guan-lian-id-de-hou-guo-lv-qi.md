@@ -31,7 +31,7 @@ public class ResponseFilter implements GlobalFilter {
 http://localhost:8072/organization-service/v1/organization/100
 ```
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```log

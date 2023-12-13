@@ -4,4 +4,4 @@ Spring Cloud是一个工具集，它将VMware、HashiCorp和Netflix等开源公�
 
 如图所示，通过Spring Cloud，可以将技术与微服务模式对应起来：
 
-<figure><img src="../../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
