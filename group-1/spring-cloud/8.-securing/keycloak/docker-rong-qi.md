@@ -23,4 +23,4 @@ services:
 
 ## Keycloak管理控制台：
 
-[http://keycloak:8080/admin/](http://192.168.10.110:8073/admin/)
+http://keycloak:8073/

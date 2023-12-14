@@ -13,7 +13,7 @@
 
 ## Keycloak 安全性组件
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Keycloak的安全性可分解为四个组件：**受保护资源**、**资源所有者**、**应用程序**和**认证/授权服务器**。上图展示了这四个组件之间的交互：
 

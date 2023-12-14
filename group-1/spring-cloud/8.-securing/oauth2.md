@@ -1,9 +1,9 @@
 # OAuth2
 
-OAuth2 is a token-based security framework that describes patterns for granting authorization but does not define how to actually perform authentication. Instead, it allows users to authenticate themselves with a third-party authentication service, called an identity provider (IdP). If the user successfully authenticates, they are presented with a token that must be sent with every request. The token can then be validated back to the authentication service.
+<mark style="color:blue;">**OAuth2是一个基于令牌的安全框架，描述了授权授予的模式，但并未定义如何实际执行身份验证**</mark>。相反，它**允许用户使用第三方身份验证服务（称为身份提供者，IdP）进行身份验证**。如果用户成功进行身份验证，系统会生成一个令牌，用户必须将其与每个请求一同发送。然后，可以将令牌发回身份验证服务进行验证。
 
-The main objective behind OAuth2 is that when multiple services are called to fulfill a user’s request, the user can be authenticated by each service without having to present their credentials to each service processing their request. OAuth2 allows us to protect our REST-based services across different scenarios through authentication schemes called grants. The OAuth2 specification has four types of grants: Password, Client credential, Authorization code, Implicit.
+OAuth2的主要目标是，当多个服务被调用以满足用户的请求时，用户可以对每个服务进行身份验证，而无需向处理其请求的每个服务提供其凭据。OAuth2通过称为授权方式的身份验证方案来保护基于REST的服务。**OAuth2规范定义了四种授权方式：密码、客户端凭证、授权码、隐式。**
 
-The real power behind OAuth2 is that it allows application developers to easily integrate with third-party cloud providers and authenticate and authorize users with those services without having to pass the user’s credentials continually to the third-party service.
+<mark style="color:blue;">**OAuth2的真正威力在于，它使应用程序开发人员能够轻松与第三方云提供商集成，并对用户进行身份验证和授权，而无需不断将用户的凭据传递给第三方服务。**</mark>
 
-OpenID Connect (OIDC) is a layer on top of the OAuth2 framework that provides authentication and profile information about who is logged in to the application (the identity). When an authorization server supports OIDC, it is sometimes called an identity provider.
+<mark style="color:blue;">**OpenID Connect（OIDC）**</mark>是建立在OAuth2框架之上的一层，**提供关于已登录应用程序用户（身份）的身份验证和个人资料信息。**当授权服务器支持OIDC时，有时将其称为**身份提供者**。

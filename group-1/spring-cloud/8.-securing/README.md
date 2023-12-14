@@ -1,11 +1,9 @@
 # 8. Securing
 
-> All systems have vulnerabilities, but the big difference lies in whether these vulnerabilities are exploited and cause harm.
+> ## <mark style="color:orange;">所有系统都存在漏洞，但重要的区别在于这些漏洞是否被利用并造成了损害。</mark>
 
-Securing a microservices architecture is a complex and laborious task that involves multiple layers of protection, including these:
+确保微服务架构的安全性是一项复杂而繁琐的任务，涉及多层次的保护，包括以下几点：
 
-The application layer—Ensures that the proper user controls are in place so that we can validate that a user is who they say they are and that they have permission to do what they’re trying to do
-
-Infrastructure—Keeps the service running, patched, and up to date to minimize the risk of vulnerabilities
-
-A network layer—Implements network access controls so that a service is only accessible through well-defined ports and only to a small number of authorized servers
+* **应用层：**确保适当的用户控制措施，以验证用户的身份并确保他们有权限执行所需的操作。
+* **基础设施：**保持服务的运行、打补丁和及时更新，以降低漏洞风险。&#x20;
+* **网络层：**实施网络访问控制，确保服务仅通过定义良好的端口访问，并且只能由少数经过授权的服务器访问。

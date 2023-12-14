@@ -4,13 +4,13 @@
 
 Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组的对象的概念。
 
-<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 注册客户端应用
 
 在Keycloak中，客户端是可以请求用户身份验证的实体。通常，客户端是我们希望通过提供单一登录（SSO）解决方案来保护的应用程序或服务。
 
-<figure><img src="../../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 添加客户端角色
 

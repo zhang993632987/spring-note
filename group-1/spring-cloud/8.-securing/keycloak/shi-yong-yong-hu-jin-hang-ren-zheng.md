@@ -8,7 +8,7 @@
 
 <details>
 
-<summary>http://192.168.10.110:8073/realms/learning-realm/.well-known/openid-configuration</summary>
+<summary><mark style="color:purple;">http://192.168.10.110:8073/realms/learning-realm/.well-known/openid-configuration</mark></summary>
 
 {% code overflow="wrap" %}
 ```json
