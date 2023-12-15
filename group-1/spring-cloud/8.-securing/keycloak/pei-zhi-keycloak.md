@@ -4,7 +4,7 @@
 
 Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组的对象的概念。
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 注册客户端应用
 

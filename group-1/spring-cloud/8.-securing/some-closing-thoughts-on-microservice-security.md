@@ -9,7 +9,7 @@ As you shape your microservices for production use, you should also build your m
 
 Figure 9.28 shows how these different pieces fit together.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Use HTTPS secure sockets layer (SSL) for all service communication
 
