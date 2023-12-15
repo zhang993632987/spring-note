@@ -147,5 +147,5 @@
     * [实例](group-1/spring-cloud/8.-securing/shi-li/README.md)
       * [使用Keycloak保护 organization 服务](group-1/spring-cloud/8.-securing/shi-li/shi-yong-keycloak-bao-hu-organization-fu-wu.md)
       * [传递访问令牌](group-1/spring-cloud/8.-securing/shi-li/chuan-di-fang-wen-ling-pai.md)
-      * [Parsing a custom field in a JWT](group-1/spring-cloud/8.-securing/shi-li/parsing-a-custom-field-in-a-jwt.md)
-    * [Some closing thoughts on microservice security](group-1/spring-cloud/8.-securing/some-closing-thoughts-on-microservice-security.md)
+      * [解析JWT中的字段](group-1/spring-cloud/8.-securing/shi-li/jie-xi-jwt-zhong-de-zi-duan.md)
+    * [关于微服务安全性的一些建议](group-1/spring-cloud/8.-securing/guan-yu-wei-fu-wu-an-quan-xing-de-yi-xie-jian-yi.md)

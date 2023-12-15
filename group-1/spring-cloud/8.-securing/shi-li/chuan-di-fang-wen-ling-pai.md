@@ -1,10 +1,10 @@
 # 传递访问令牌
 
-下图展示了经过身份验证的用户令牌是如何通过网关、许可服务，然后传递到组织服务的。
+下图展示了用户令牌是如何通过网关、licensing 服务，然后传递到 organization 服务的：
 
 <figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-1. 用户已经通过Keycloak服务器进行了身份验证，并调用了O-stock Web应用程序。
+1. 用户已经通过Keycloak服务器进行了身份认证，并调用了O-stock Web应用程序。
    * 用户的访问令牌存储在用户的会话中。
    * O-stock Web应用程序需要检索一些许可数据并调用 licensing 服务的REST端点。
    * 在调用许可REST端点的过程中，O-stock Web应用程序通过HTTP Authentication 标头添加了访问令牌。

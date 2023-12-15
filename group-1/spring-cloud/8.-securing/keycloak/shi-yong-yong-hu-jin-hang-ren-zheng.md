@@ -2,7 +2,7 @@
 
 ## 查询令牌申领端点
 
-让我们启动我们的身份验证服务。为此，请在左侧菜单中点击“**Realm Settings**”选项，然后点击“**OpenID Endpoint Configuration**”链接，以查看领域可用端点的列表。
+让我们启动我们的身份认证服务。为此，请在左侧菜单中点击“**Realm Settings**”选项，然后点击“**OpenID Endpoint Configuration**”链接，以查看领域可用端点的列表。
 
 <figure><img src="../../../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
@@ -34,9 +34,9 @@
 
 <mark style="color:blue;">**JSON 响应中的 token\_endpoint 是令牌的申领端点。**</mark>
 
-使用Postman向端点 http://192.168.10.110:8073/realms/learning-realm/protocol/openid-connect/token 发送POST请求，然后提供**应用程序**、**密钥**、**用户ID**和**密码**。使用**基本身份验证**将这些元素传递到身份验证服务器端点。
+使用Postman向端点 http://192.168.10.110:8073/realms/learning-realm/protocol/openid-connect/token 发送POST请求，然后提供**应用程序**、**密钥**、**用户ID**和**密码**。使用**基本身份认证**将这些元素传递到身份认证服务器端点。
 
-下图显示了如何设置Postman以执行基本身份验证调用。请注意，我们将使用之前定义的**应用程序名称**和**应用程序密钥**作为密码：
+下图显示了如何设置Postman以执行基本身份认证调用。请注意，我们将使用之前定义的**应用程序名称**和**应用程序密钥**作为密码：
 
 <figure><img src="../../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
@@ -46,7 +46,7 @@
 * **username**：登录用户的名称。
 * **password**：登录用户的密码。
 
-下图显示了我们的身份验证调用配置这些HTTP表单参数的方式。
+下图显示了我们的身份认证调用配置这些HTTP表单参数的方式。
 
 <figure><img src="../../../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 

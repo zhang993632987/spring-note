@@ -1,6 +1,6 @@
 # 配置 Keycloak
 
-## Creating an realm
+## 创建一个领域
 
 Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组的对象的概念。
 
@@ -8,7 +8,7 @@ Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组�
 
 ## 注册客户端应用
 
-在Keycloak中，客户端是可以请求用户身份验证的实体。通常，客户端是我们希望通过提供单一登录（SSO）解决方案来保护的应用程序或服务。
+在Keycloak中，客户端是可以请求用户身份认证的实体。通常，客户端是我们希望通过提供单一登录（SSO）解决方案来保护的应用程序或服务。
 
 <figure><img src="../../../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -21,9 +21,9 @@ Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组�
 
 <figure><img src="../../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-### Credentials page
+### Credentials 页面
 
-既然我们已经完成了基本的客户端配置，让我们访问“**Credentials**”页面。该页面将显示身份验证过程所需的客户端密钥：
+既然我们已经完成了基本的客户端配置，让我们访问“**Credentials**”页面。该页面将显示身份认证过程所需的客户端密钥：
 
 <figure><img src="../../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
