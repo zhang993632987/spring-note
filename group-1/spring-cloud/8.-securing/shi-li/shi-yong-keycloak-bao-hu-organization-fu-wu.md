@@ -14,31 +14,21 @@
 
 ```xml
 <dependencies>
-  <!-- Keycloak Spring Boot dependency -->
+    <!-- OAuth2 Client dependency -->
     <dependency>
-        <groupId>org.keycloak</groupId>
-        <artifactId>keycloak-spring-boot-starter</artifactId>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-oauth2-client</artifactId>
     </dependency>
-    <!-- Keycloak Spring Boot dependency -->
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
+    <!-- OAuth2 Client dependency -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
     </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
 </dependencies>
-<dependencyManagement>
- <dependencies>
-      <dependency>
-           <groupId>org.keycloak.bom</groupId>
-           <artifactId>keycloak-adapter-bom</artifactId>
-           <version>22.0.5</version>
-           <type>pom</type>
-           <scope>import</scope>
-       </dependency>
-</dependencyManagement>
 ```
 
 ## 配置服务，以指向Keycloak服务器
@@ -49,21 +39,18 @@
 ```properties
 spring:
   security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: "http://192.168.10.110:8073/realms/learning-realm/protocol/openid-connect/certs"
-          
-keycloak:
-  realm: 'learning-realm' # The created realm name
-  # The Keycloak server URL Auth endpoint: http://<keycloak_server_url>
-  auth-server-url: 'http://192.168.10.110:8073'
-  resource: 'learning' # The created client ID
-  credentials:
-    secret: 'BMF0NGhYC9Gk4nsjOXTiFc56rnPzHcuY' # The created client secret
-  bearer-only: 'true'
-  use-resource-role-mappings: 'true'
-  ssl-required: external
+      oauth2:
+        client:
+            registration:
+              login-client:
+                provider: keycloak
+                client-id: learning
+                client-secret: "BMF0NGhYC9Gk4nsjOXTiFc56rnPzHcuY"
+                authorization-grant-type: authorization_code
+                scope: openid,profile,roles,email
+            provider:
+              keycloak:
+                issuer-uri: "http://192.168.10.110:8073/realms/learning-realm"
 ```
 {% endcode %}
 
@@ -89,19 +76,8 @@ public class OAuth2SecurityConfig {
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
     }
-
-    @Bean
-    public KeycloakConfigResolver KeycloakConfigResolver() {
-        /*
-         * By default, the Spring Security Adapter
-         * looks for a keycloak.json file.
-         */
-        return new KeycloakSpringBootConfigResolver();
-    }
 }
 ```
-
-
 
 </details>
 

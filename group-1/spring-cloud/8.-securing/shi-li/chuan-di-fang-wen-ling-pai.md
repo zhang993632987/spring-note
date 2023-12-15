@@ -40,16 +40,101 @@ spring:
 
 ### RestTemplate
 
-**如果没有Spring Security，我们将不得不编写一个servlet过滤器来获取传入许可服务调用的HTTP标头，然后将其添加到 licensing 服务中的每个出站服务调用中。**
+**如果没有Spring Security，我们将不得不编写一个servlet过滤器来获取传入 licensing 服务调用的HTTP标头，然后将其添加到 licensing 服务中的每个出站服务调用中。**
 
-<mark style="color:blue;">**Keycloak提供了一个新的支持这些调用的REST模板类，名为KeycloakRestTemplate。**</mark>要使用这个类，只需要将它公开为一个bean，然后利用 Spring 的自动注入即可。
-
-
+> <mark style="color:red;">**找了一圈，无论是 keycloak 还是 spring 都没有准确的配置方案，官方文档上给出的方案均证明失效！！**</mark>
+>
+> <mark style="color:red;">**最后，没有办法，只能根据 Spring Security 中的做法自定义一个 Interceptor：**</mark>
 
 <details>
 
-<summary></summary>
+<summary><mark style="color:purple;">OAuth2TokenInterceptor</mark> </summary>
 
+```java
+@Component
+public class OAuth2TokenInterceptor implements
+        ClientHttpRequestInterceptor, RequestInterceptor {
+    @Override
+    public ClientHttpResponse intercept(
+            HttpRequest request, byte[] body,
+            ClientHttpRequestExecution execution)
+            throws IOException {
 
+        String token = getToken();
+        if (token != null)
+            request.getHeaders().setBearerAuth(token);
+        return execution.execute(request, body);
+    }
+
+    @Override
+    public void apply(RequestTemplate template) {
+        String token = getToken();
+        if (token != null)
+            template.header(HttpHeaders.AUTHORIZATION, "Bearer " + token);
+    }
+
+    private String getToken() {
+        Authentication authentication = SecurityContextHolder
+                .getContext().getAuthentication();
+        if (authentication != null) {
+            Object credentials = authentication.getCredentials();
+            if (credentials instanceof AbstractOAuth2Token) {
+                AbstractOAuth2Token token = (AbstractOAuth2Token)
+                        credentials;
+                return token.getTokenValue();
+            }
+        }
+        return null;
+    }
+}
+```
 
 </details>
+
+**将 OAuth2TokenInterceptor 注入到 RestTemplate 中：**
+
+<details>
+
+<summary><mark style="color:purple;">RestTemplate Bean</mark></summary>
+
+```
+@Bean
+@LoadBalanced
+public RestTemplate restTemplate() {
+    RestTemplate template = new RestTemplate();
+    List<ClientHttpRequestInterceptor> interceptors = template.getInterceptors();
+    // Adds UserContextInterceptor to the RestTemplate instance
+    if (interceptors == null) {
+        interceptors = Arrays.asList(oAuth2TokenInterceptor, userContextInterceptor);
+        template.setInterceptors(interceptors);
+    } else {
+        interceptors.add(oAuth2TokenInterceptor);
+        interceptors.add(userContextInterceptor);
+        template.setInterceptors(interceptors);
+    }
+    return template;
+}
+```
+
+</details>
+
+> ## <mark style="color:orange;">**注意：**</mark>
+>
+> OAuth2TokenInterceptor 的原理是 Spring Security 提供了一个拦截器，将请求中传递的 Authroization 头保存到了 SecurityContextHolder 中，而 SecurityContextHolder 很明显是基于 ThreadLocal 来保存Authorization 对象的。
+>
+> 因此，<mark style="color:orange;">**如果使用 CircuitBreakerFactory 的方式调用远程服务，因为 ThreadLocal 传递不进去，因此哪怕将 OAuth2TokenInterceptor 注入了 RestTemplate，一样无法传播，需要在代码中进行手动处理：**</mark>
+>
+> ```java
+> final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+>         try {
+>             return circuitBreakerFactory.create(ORGANIZATION_SERVICE).run(
+>                     () -> {
+>                         SecurityContextHolder.getContext().setAuthentication(authentication);
+>                         log.debug("CircuitBreakerFactory Correlation id: {}",
+>                                 UserContextHolder.getContext().getCorrelationId());
+>                         return organizationFeignClient.getOrganization(organizationId);
+>                     },
+>                     throwable -> getOrgBackup(organizationId, throwable)
+>             );
+>         } catch (Exception e) {
+> ```

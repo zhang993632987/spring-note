@@ -49,5 +49,5 @@ private JSONObject decodeJWT(String JWTToken) {
 
 ```log
 tmx-correlation-id found in tracking filter: 26f2b2b7-51f0-4574-9d84-07e563577641. 
-The authentication name from the token is : illary.huaylupo
+The authentication name from the token is : admin
 ```
