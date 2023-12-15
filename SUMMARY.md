@@ -149,3 +149,8 @@
       * [传递访问令牌](group-1/spring-cloud/8.-securing/shi-li/chuan-di-fang-wen-ling-pai.md)
       * [解析JWT中的字段](group-1/spring-cloud/8.-securing/shi-li/jie-xi-jwt-zhong-de-zi-duan.md)
     * [关于微服务安全性的一些建议](group-1/spring-cloud/8.-securing/guan-yu-wei-fu-wu-an-quan-xing-de-yi-xie-jian-yi.md)
+
+## Group 2
+
+* [resilience4j](group-2/resilience4j.md)
+* [oauth2](group-2/oauth2.md)
