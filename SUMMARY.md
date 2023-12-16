@@ -149,6 +149,17 @@
       * [传递访问令牌](group-1/spring-cloud/8.-securing/shi-li/chuan-di-fang-wen-ling-pai.md)
       * [解析JWT中的字段](group-1/spring-cloud/8.-securing/shi-li/jie-xi-jwt-zhong-de-zi-duan.md)
     * [关于微服务安全性的一些建议](group-1/spring-cloud/8.-securing/guan-yu-wei-fu-wu-an-quan-xing-de-yi-xie-jian-yi.md)
+  * [9. Spring Cloud Stream](group-1/spring-cloud/9.-spring-cloud-stream/README.md)
+    * [Using messaging to communicate state changes between services](group-1/spring-cloud/9.-spring-cloud-stream/using-messaging-to-communicate-state-changes-between-services.md)
+    * [Introducing Spring Cloud Stream](group-1/spring-cloud/9.-spring-cloud-stream/introducing-spring-cloud-stream.md)
+    * [Writing a simple message producer and consumer](group-1/spring-cloud/9.-spring-cloud-stream/writing-a-simple-message-producer-and-consumer/README.md)
+      * [Configuring Apache Kafka and Redis in Docker](group-1/spring-cloud/9.-spring-cloud-stream/writing-a-simple-message-producer-and-consumer/configuring-apache-kafka-and-redis-in-docker.md)
+      * [Writing the message producer in the organization service](group-1/spring-cloud/9.-spring-cloud-stream/writing-a-simple-message-producer-and-consumer/writing-the-message-producer-in-the-organization-service.md)
+      * [Writing the message consumer in the licensing service](group-1/spring-cloud/9.-spring-cloud-stream/writing-a-simple-message-producer-and-consumer/writing-the-message-consumer-in-the-licensing-service.md)
+      * [Seeing the message service in action](group-1/spring-cloud/9.-spring-cloud-stream/writing-a-simple-message-producer-and-consumer/seeing-the-message-service-in-action.md)
+    * [A Spring Cloud Stream use case: Distributed caching](group-1/spring-cloud/9.-spring-cloud-stream/a-spring-cloud-stream-use-case-distributed-caching/README.md)
+      * [Using Redis to cache lookups](group-1/spring-cloud/9.-spring-cloud-stream/a-spring-cloud-stream-use-case-distributed-caching/using-redis-to-cache-lookups.md)
+      * [Defining custom channels](group-1/spring-cloud/9.-spring-cloud-stream/a-spring-cloud-stream-use-case-distributed-caching/defining-custom-channels.md)
 
 ## Group 2
 

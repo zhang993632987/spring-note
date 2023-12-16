@@ -9,7 +9,7 @@
 
 下图展示了这些不同部分如何相互配合：
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## **对所有服务的通信，使用HTTPS/安全套接字层（SSL）**
 

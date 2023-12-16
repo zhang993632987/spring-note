@@ -11,7 +11,7 @@
 
 下图展示了我们将如何为许可服务构建这些不同组件：
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 1. 当通过网关调用 licensing 服务时，TrackingFilter 会在传入网关的任何调用的HTTP头中注入关联ID。
 2. UserContextFilter类是一个自定义的HTTP Servlet过滤器，将关联ID映射到UserContext类。UserContext类会在线程中存储这些值，以供稍后在调用中使用。

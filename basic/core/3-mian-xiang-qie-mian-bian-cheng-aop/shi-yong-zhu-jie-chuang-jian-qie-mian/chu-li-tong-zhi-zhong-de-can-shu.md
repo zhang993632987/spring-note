@@ -41,7 +41,7 @@ public class TrackCounter {
 
 下图将切点表达式进行了分解，以展现参数是在什么地方指定的：
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 * <mark style="color:blue;">**切点表达式中的 args(trackNumber) 限定符表明传递给 playTrack() 方法的 int 类型参数也会传递到通知中去**</mark>。
 * **参数的名称 trackNumber 也与切点方法签名中的参数相匹配。**这个参数会传递到通知方法中，这个通知方法是通过 @Before 注解和命名切点 trackPlayed(trackNumber) 定义的。**切点定义中的参数与切点方法中的参数名称是一样的**，这样就完成了从命名切点到通知方法的参数转移。
