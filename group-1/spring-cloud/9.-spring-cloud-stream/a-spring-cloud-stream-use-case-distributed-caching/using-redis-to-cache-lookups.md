@@ -24,19 +24,17 @@ The first thing we need to do is include the spring-data-redis dependencies, alo
 
 ## CONSTRUCTING THE DATABASE CONNECTION TO A REDIS SERVER
 
-```
-// Some code
-```
-
-Once we have a connection to Redis, we’ll use that connection to create a Spring RedisTemplate object.
-
-```java
-@Bean   
-public RedisTemplate<String, Object> redisTemplate() {
-   RedisTemplate<String, Object> template = new RedisTemplate<>();
-   template.setConnectionFactory(jedisConnectionFactory());
-   return template;
-}
+```yaml
+spring:
+  redis:
+    host: 192.168.10.110
+    port: 6379
+    jedis:
+      pool:
+        enabled: true
+        min-idle: 8
+        max-active: 8
+        max-wait: 5s
 ```
 
 ## DEFINING THE SPRING DATA REDIS REPOSITORIES
@@ -74,64 +72,71 @@ One important thing to note from the code is that a Redis server can contain mul
 
 Every time the licensing service needs the organization data, it checks the Redis cache before calling the organization service. You’ll find the logic for doing this in the OrganizationRestTemplateClient class.
 
+{% code overflow="wrap" lineNumbers="true" %}
 ```java
+@Slf4j
 @Component
 public class OrganizationRestTemplateClient {
-    @Autowired
-    RestTemplate restTemplate;
-    @Autowired
-    OrganizationRedisRepository redisRepository;    
-    private static final Logger logger =
-         LoggerFactory.getLogger(OrganizationRestTemplateClient.class);
-         
+
+    private RestTemplate restTemplate;
+
+    private OrganizationRedisRepository redisRepository;
+
     private Organization checkRedisCache(String organizationId) {
         try {
-           return redisRepository
+            return redisRepository
                     .findById(organizationId)
-                    .orElse(null);   
-        }catch (Exception ex){
-           logger.error("Error encountered while trying to retrieve 
-            organization{} check Redis Cache.  Exception {}", 
-            organizationId, ex);
-           return null;
+                    .orElse(null);
+        } catch (Exception ex) {
+            log.error("Error encountered while trying to retrieve organization{} check Redis Cache. Exception {}",
+                    organizationId, ex);
+            return null;
         }
     }
-    
+
     private void cacheOrganizationObject(Organization organization) {
         try {
-           redisRepository.save(organization);    
-        }catch (Exception ex){
-           logger.error("Unable to cache organization {} in 
-            Redis. Exception {}",
-            organization.getId(), ex);
+            redisRepository.save(organization);
+        } catch (Exception ex) {
+            log.error("Unable to cache organization {} in Redis.Exception {}",
+                    organization.getId(), ex);
         }
     }
-    
-    public Organization getOrganization(String organizationId){
-        logger.debug("In Licensing Service.getOrganization: {}", 
-            UserContext.getCorrelationId());
+
+    public Organization getOrganization(String organizationId) {
+        log.debug("In Licensing Service.getOrganization: {}",
+                UserContextHolder.getContext().getCorrelationId());
         Organization organization = checkRedisCache(organizationId);
-        if (organization != null){    
-          logger.debug("I have successfully retrieved an organization
-            {} from the redis cache: {}", organizationId,
-            organization);
-        return organization;
-        }
-        logger.debug("Unable to locate organization from the 
-            redis cache: {}.",organizationId);
-        ResponseEntity<Organization> restExchange =
-           restTemplate.exchange(
-            "http://gateway:8072/organization/v1/organization/
-            {organizationId}",HttpMethod.GET,
-            null, Organization.class, organizationId);
-        organization = restExchange.getBody();
         if (organization != null) {
-          cacheOrganizationObject(organization);
+            log.debug("I have successfully retrieved an organization {} from the redis cache: {}",
+                    organizationId, organization);
+            return organization;
         }
-        return restExchange.getBody();
-   }
-}    
+        log.debug("Unable to locate organization from the redis cache:{}.", organizationId);
+
+        organization = restTemplate.getForObject(
+                "http://{applicationId}/v1/organization/{organizationId}",
+                Organization.class,
+                "organization-service",
+                organizationId);
+        if (organization != null) {
+            cacheOrganizationObject(organization);
+        }
+        return organization;
+    }
+
+    @Autowired
+    public void setRestTemplate(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    @Autowired
+    public void setRedisRepository(OrganizationRedisRepository redisRepository) {
+        this.redisRepository = redisRepository;
+    }
+}
 ```
+{% endcode %}
 
 The getOrganization() method is where the call to the organization service takes place. Before we make the actual REST call, we need to retrieve the Organization object associated with the call from Redis using the checkRedisCache() method.
 

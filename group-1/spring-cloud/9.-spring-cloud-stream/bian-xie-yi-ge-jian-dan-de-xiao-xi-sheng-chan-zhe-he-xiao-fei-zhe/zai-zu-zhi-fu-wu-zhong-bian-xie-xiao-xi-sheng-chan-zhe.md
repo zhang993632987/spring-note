@@ -1,12 +1,12 @@
-# Writing the message producer in the organization service
+# 在组织服务中编写消息生产者
 
-Every time organization data is added, updated, or deleted, the organization service will publish a message to a Kafka topic, indicating that an organization change event has occurred. The published message will include the organizationID associated with the change event and what action occurred (add, update, or delete).
+每当组织数据被添加、更新或删除时，organization 服务将向Kafka主题发布一条消息，表示发生了组织变更事件。发布的消息将包括与变更事件相关联的组织ID以及发生的操作（添加、更新或删除）。
 
 ## 添加依赖
 
-In the pom.xml, we need to add two dependencies, one for the core Spring Cloud Stream libraries and the other for the Spring Cloud Stream Kafka libraries:
+在 pom.xml 中，我们需要添加两个依赖项：
 
-```
+```xml
 <dependency>
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-stream</artifactId>
@@ -19,55 +19,83 @@ In the pom.xml, we need to add two dependencies, one for the core Spring Cloud S
 
 ## 绑定消息代理
 
-Once we’ve defined the Maven dependencies, we need to tell our application that it’s going to bind to a Spring Cloud Stream message broker. We can do this by annotating the organization service’s bootstrap class, OrganizationServiceApplication, with @EnableBinding.
+接下来，需要告诉应用程序它将绑定到一个Spring Cloud Stream消息代理。
 
 {% code overflow="wrap" %}
 ```java
-@SpringBootApplication
 @RefreshScope
-@EnableResourceServer
-@EnableBinding(Source.class)    // Tells Spring Cloud Stream to bind the application to a message broker
+@SpringBootApplication
+@MapperScan("com.study.organization.mapper")
 public class OrganizationServiceApplication {
-   public static void main(String[] args) {
-      SpringApplication.run(OrganizationServiceApplication.class, args);
-   }
+
+    public static void main(String[] args) {
+        SpringApplication.run(OrganizationServiceApplication.class, args);
+    }
+
+    @Bean
+    public Function<String, String> send() {
+        return value -> value.toUpperCase();
+    }
 }
 ```
 {% endcode %}
 
-The @EnableBinding annotation tells Spring Cloud Stream that we want to bind the service to a message broker. The use of Source.class in @EnableBinding tells Spring Cloud Stream that this service will communicate with the message broker via a set of channels defined in the Source class.
+In the preceding example, we define a bean of type java.util.function.Function called send to be acting as message handler whose 'input' and 'output' must be bound to the external destinations exposed by the provided destination binder. By default the 'input' and 'output' binding names will be send-in-0 and send-out-0.
 
-Channels sit above a message queue. Spring Cloud Stream has a default set of channels that can be configured to speak to a message broker.
+So if  you would want to map the input of this function to a remote destination (e.g., topic, queue etc) called "my-topic" you would do so with the following property:
+
+```
+spring.cloud.stream.bindings.send-in-0.destination=my-topic
+```
+
+> The naming convention used to name input and output bindings is as follows:&#x20;
+>
+> * input - + -in- + \<index>
+> * output - + -out- + \<index>
+>
+> The in and out corresponds to the type of binding (such as input or output). The index is the index of the input or output binding. It is always 0 for typical single input/output function.
+
+> Descriptive Binding Names
+>
+> you can map an implicit binding name to an explicit binding name. you can do it with spring.cloud.stream.function.bindings.\<bind\_name> property.
+>
+> ```
+> spring.cloud.stream.function.bindings.send-in-0=input
+> ```
+>
+> In the preceding example you mapped and effectively renamed uppercase-in-0 binding name to input. Now all configuration properties can refer to input binding name instead (e.g., spring.cloud.stream.bindings.input.destination=my-topic).
 
 ## 发布消息
 
-The next step is to create the logic to publish the message. The following listingshows the code for this class.
+下一步是创建发布消息的逻辑：
 
 ```java
+@Slf4j
 @Component
 public class SimpleSourceBean {
-    private Source source;
-    private static final Logger logger =
-       LoggerFactory.getLogger(SimpleSourceBean.class);
-       
-    // Injects a Source interface implementation for use by the service
-    public SimpleSourceBean(Source source){   
-        this.source = source;
-    }
-    public void publishOrganizationChange(ActionEnum action, 
-                                     String organizationId){
-       logger.debug("Sending Kafka message {} for Organization Id: {}",
-                    action, organizationId);
+
+    private MessageChannel sendOrgChannel;
+
+    public void publishOrganizationChange(ActionEnum action,
+                                          String organizationId) {
+        log.debug("Sending Kafka message {} for Organization Id: {}",
+                action, organizationId);
         // Publishes a Java POJO message
-        OrganizationChangeModel change =  new OrganizationChangeModel(
+        OrganizationChangeModel change = new OrganizationChangeModel(
                 OrganizationChangeModel.class.getTypeName(),
                 action.toString(),
                 organizationId,
-                UserContext.getCorrelationId()); 
-        // Sends the message from a channel defined in the Source class 
-        source.output().send(MessageBuilder  
-                          .withPayload(change)
-                          .build()); 
+                UserContextHolder.getContext().getCorrelationId()
+        );
+        // Sends the message from a channel defined in the Source class
+        sendOrgChannel.send(MessageBuilder.withPayload(change).build());
+    }
+
+    @Lazy
+    @Qualifier("send-org")
+    @Autowired(required = false)
+    public void setSendOrgChannel(MessageChannel sendOrgChannel) {
+        this.sendOrgChannel = sendOrgChannel;
     }
 }
 ```
@@ -103,13 +131,28 @@ The send() method takes a Spring Message class. We use a Spring helper class, ca
 
 Listing 10.6 shows the configuration that maps our service’s Spring Cloud Stream Source to a Kafka message broker and a message topic.
 
-```properties
-# Names the message queue (or topic) that writes the messages
-spring.cloud.stream.bindings.output.destination=orgChangeTopic  
-# Provides (hints) the message type that’s sent and received (in this case, JSON) 
-spring.cloud.stream.bindings.output.content-type=application/json    
-spring.cloud.stream.kafka.binder.zkNodes=localhost    
-spring.cloud.stream.kafka.binder.brokers=localhost
+```yaml
+spring:
+  cloud:
+    stream:
+      function:
+        definition: send
+        bindings:
+          send-out-0: send-org
+      bindings:
+        send-org:
+          destination: orgChangeTopic
+          producer:
+            useNativeEncoding: true
+      kafka:
+        bindings:
+          send-org:
+            producer:
+              configuration:
+                value.serializer: org.springframework.kafka.support.serializer.JsonSerializer
+        binder:
+          brokers: 192.168.10.110:9094
+          requiredAcks: all
 ```
 
 The spring.cloud.stream.bindings is the start of the configuration needed for our service to publish to a Spring Cloud Stream message broker. The configuration property spring.cloud.stream.bindings.output in the listing maps the source.output() channel in listing 10.4 to the orgChangeTopic on the message broker we’re going to communicate with. It also tells Spring Cloud Stream that messages sent to this topic should be serialized as JSON. Spring Cloud Stream can serialize messages in multiple formats including JSON, XML, and the Apache Foundation’s Avro format.
