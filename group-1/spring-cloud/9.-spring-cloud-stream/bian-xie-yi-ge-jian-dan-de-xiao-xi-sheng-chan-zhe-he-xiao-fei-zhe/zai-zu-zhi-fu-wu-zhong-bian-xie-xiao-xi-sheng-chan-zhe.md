@@ -40,31 +40,6 @@ public class OrganizationServiceApplication {
 ```
 {% endcode %}
 
-In the preceding example, we define a bean of type java.util.function.Function called send to be acting as message handler whose 'input' and 'output' must be bound to the external destinations exposed by the provided destination binder. By default the 'input' and 'output' binding names will be send-in-0 and send-out-0.
-
-So if  you would want to map the input of this function to a remote destination (e.g., topic, queue etc) called "my-topic" you would do so with the following property:
-
-```
-spring.cloud.stream.bindings.send-in-0.destination=my-topic
-```
-
-> The naming convention used to name input and output bindings is as follows:&#x20;
->
-> * input - + -in- + \<index>
-> * output - + -out- + \<index>
->
-> The in and out corresponds to the type of binding (such as input or output). The index is the index of the input or output binding. It is always 0 for typical single input/output function.
-
-> Descriptive Binding Names
->
-> you can map an implicit binding name to an explicit binding name. you can do it with spring.cloud.stream.function.bindings.\<bind\_name> property.
->
-> ```
-> spring.cloud.stream.function.bindings.send-in-0=input
-> ```
->
-> In the preceding example you mapped and effectively renamed uppercase-in-0 binding name to input. Now all configuration properties can refer to input binding name instead (e.g., spring.cloud.stream.bindings.input.destination=my-topic).
-
 ## 发布消息
 
 下一步是创建发布消息的逻辑：
@@ -100,12 +75,6 @@ public class SimpleSourceBean {
 }
 ```
 
-In listing 10.4, we injected the Spring Cloud Source class into our code. Remember, all communication to a specific message topic occurs through a Spring Cloud Stream construct called a channel, which is represented by a Java interface class. In the listing, we used the Source interface, which exposes a single method called output().
-
-The Source interface is convenient to use when our service only needs to publish to a single channel. The output() method returns a class of type MessageChannel. With this type, we’ll send messages to the message broker.
-
-TheActionEnum passed by the parameters in the output() method contains the following actions:&#x20;
-
 ```java
 public enum ActionEnum {
    GET,
@@ -119,15 +88,7 @@ The actual publication of the message occurs in the publishOrganizationChange() 
 
 > We should always include a correlation ID in our events as it helps greatly with tracking and debugging the flow of messages through our services.
 
-If we go back to the SimpleSourceBean class, we can see that when we’re ready to publish the message, we can use the send() method on the MessageChannel class returned from the source.output() method like this:
-
-```java
-source.output().send(MessageBuilder.withPayload(change).build());
-```
-
-The send() method takes a Spring Message class. We use a Spring helper class, called MessageBuilder, to take the contents of the OrganizationChangeModel class and convert it to a Spring Message class.
-
-## 配置 channel
+## 配置 binding
 
 Listing 10.6 shows the configuration that maps our service’s Spring Cloud Stream Source to a Kafka message broker and a message topic.
 

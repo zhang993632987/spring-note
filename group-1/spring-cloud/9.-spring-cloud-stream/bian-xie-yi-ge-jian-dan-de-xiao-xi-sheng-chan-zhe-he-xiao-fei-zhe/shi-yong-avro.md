@@ -1,5 +1,20 @@
 # 使用avro
 
+## 部署schema registry
+
+```yaml
+schema-registry:
+  image: docker.io/bitnami/schema-registry:7.5
+  restart: always
+  ports:
+    - '8074:8081'
+  depends_on:
+    - kafka
+  environment:
+    - SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081
+    - SCHEMA_REGISTRY_KAFKA_BROKERS=PLAINTEXT://kafka:9092
+```
+
 ## 添加依赖
 
 <details>
