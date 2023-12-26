@@ -17,7 +17,7 @@
 
 ```java
 @Bean
-public Consumer<OrganizationChangeModel> consumer() {
+public Consumer<OrganizationChangeModel> consume() {
     return orgChange -> log.debug("Received an {} event for organization id {}",
                 orgChange.getAction(), orgChange.getOrganizationId());
 }
@@ -28,11 +28,11 @@ public Consumer<OrganizationChangeModel> consumer() {
 ```yaml
 spring:
   cloud:
+    function:
+      definition: consume
     stream:
-      function:
-        definition: consumer
       bindings:
-        consumer-in-0:
+        consume-in-0:
           destination: orgChangeTopic
           contentType: application/json
           group: license

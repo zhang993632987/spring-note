@@ -91,14 +91,13 @@ public enum ActionEnum {
 ```yaml
 spring:
   cloud:
+    function:
+      definition: send
     stream:
-      function:
-        definition: send
       bindings:
         send-out-0:
           destination: orgChangeTopic
           contentType: application/json
-          group: organization
       kafka:
         binder:
           brokers: 192.168.10.110:9094

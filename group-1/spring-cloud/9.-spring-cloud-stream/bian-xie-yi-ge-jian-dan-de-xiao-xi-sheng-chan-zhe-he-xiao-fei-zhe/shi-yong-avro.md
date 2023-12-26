@@ -165,15 +165,12 @@ mvn avro:schema
 ```yaml
 spring:
   cloud:
+    function:
+      definition: send
     stream:
-      function:
-        definition: send
-        bindings:
-          send-out-0: send-org
       bindings:
         send-out-0:
           destination: orgChangeTopic
-          group: organization
           producer:
             useNativeEncoding: true
       kafka:
@@ -193,9 +190,9 @@ spring:
 ```yaml
 spring:
   cloud:
+    function:
+      definition: consume
     stream:
-      function:
-        definition: consume
       bindings:
         consume-in-0:
           destination: orgChangeTopic
