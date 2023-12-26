@@ -8,29 +8,36 @@ Spring Cloud Stream是用于构建基于消息驱动微服务应用程序的框�
 
 A Spring Cloud Stream application consists of a middleware-neutral core. The application communicates with the outside world by establishing _bindings_ between destinations exposed by the external brokers and input/output arguments in your code. Broker specific details necessary to establish bindings are handled by middleware-specific _Binder_ implementations.
 
+Spring Cloud Stream 应用程序由一个与中间件无关的核心组成，该应用通过在代码中建立**input/output**参数与**destination**（外部**代理**）之间的绑定，与外界进行通信。建立这些绑定所需的特定于代理的详细信息由中间件特定的**Binder**实现处理。
+
 <figure><img src="../../../../.gitbook/assets/SCSt-with-binder.png" alt=""><figcaption></figcaption></figure>
 
 ## 消费者群组
 
-Spring Cloud Stream consumer groups are similar to and inspired by Kafka consumer groups.Each consumer binding can use the `spring.cloud.stream.bindings.<bindingName>.group` property to specify a group name.
+**Spring Cloud Stream 的消费者组类似于Kafka 的消费者群组**，订阅给定目标的所有组都会收到已发布数据的副本，但**每个组中只有一个成员会接收来自该目标的特定消息**。
 
-All groups that subscribe to a given destination receive a copy of published data, but only one member of each group receives a given message from that destination. By default, when a group is not specified, Spring Cloud Stream assigns the application to an anonymous and independent single-member consumer group that is in a publish-subscribe relationship with all other consumer groups.
+每个消费者**绑定**都可以使用 **spring.cloud.stream.bindings.\<bindingName>.group** 属性指定一个组名。默认情况下，当未指定组时，Spring Cloud Stream 会将应用分配到一个匿名且独立的单成员消费者组。
 
-In general, it is preferable to always specify a consumer group when binding an application to a given destination. When scaling up a Spring Cloud Stream application, you must specify a consumer group for each of its input bindings. Doing so prevents the application’s instances from receiving duplicate messages (unless that behavior is desired, which is unusual).
+> 通**常情况下，最好在将应用程序绑定到给定目标时始终指定一个消费者组。**
+>
+> 在扩展 Spring Cloud Stream 应用程序时，必须为其每个输入绑定指定一个消费者组。这样做可以防止应用程序实例接收到重复的消息（除非需要这种行为，这是不寻常的）。
 
-## Consumer Types <a href="#consumer-types" id="consumer-types"></a>
+## Consumer 类型 <a href="#consumer-types" id="consumer-types"></a>
 
-Two types of consumer are supported:
+Spring Cloud Stream 支持两种类型的消费者：
 
-* Message-driven (sometimes referred to as Asynchronous)
-* Polled (sometimes referred to as Synchronous)
+1. **消息驱动**（有时称为异步）：这种类型的消费者是通过消息的到达触发的，即一旦消息到达就会触发相应的处理。
+2. **轮询**（有时称为同步）：这种类型的消费者是通过轮询获取消息，即定期检查是否有新消息。
 
-When you wish to control the rate at which messages are processed, you might want to use a synchronous consumer.
+> **当希望控制消息处理的速率时，可能会选择使用同步消费者。**
 
 ## 分区支持
 
-Spring Cloud Stream provides support for partitioning data between multiple instances of a given application. In a partitioned scenario, the physical communication medium (such as the broker topic) is viewed as being structured into multiple partitions. One or more producer application instances send data to multiple consumer application instances and ensure that data identified by common characteristics are processed by the same consumer instance.
+**Spring Cloud Stream支持将数据在给定应用的多个实例之间进行分区**。
 
-Spring Cloud Stream provides a common abstraction for implementing partitioned processing use cases in a uniform fashion. Partitioning can thus be used whether the broker itself is naturally partitioned (for example, Kafka) or not (for example, RabbitMQ).
+* 在分区的场景中，物理通信介质（例如代理主题）被看作是由多个分区构成的。
+* **一个或多个生产者应用实例将数据发送到多个消费者应用实例，并确保由共同特征标识的数据由同一消费者实例处理。**
 
-> To set up a partitioned processing scenario, you must configure both the data-producing and the data-consuming ends.
+<mark style="color:blue;">**Spring Cloud Stream提供了一种统一的抽象，以一致的方式实现分区支持。因此，无论代理本身是否支持分区（例如Kafka），都可以使用分区（例如RabbitMQ）。**</mark>
+
+> **要设置分区处理场景，必须同时配置数据生成和数据消费的两端。**
