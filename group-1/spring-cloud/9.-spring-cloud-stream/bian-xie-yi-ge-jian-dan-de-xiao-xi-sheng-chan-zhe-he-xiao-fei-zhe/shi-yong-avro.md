@@ -19,7 +19,7 @@ schema-registry:
 
 <details>
 
-<summary>properties</summary>
+<summary><mark style="color:purple;"><strong>properties</strong></mark></summary>
 
 ```xml
 <confluent.version>5.2.0</confluent.version>
@@ -30,7 +30,7 @@ schema-registry:
 
 <details>
 
-<summary>dependencise</summary>
+<summary><mark style="color:purple;"><strong>dependencise</strong></mark></summary>
 
 <pre class="language-xml"><code class="lang-xml"><strong>&#x3C;dependency>
 </strong>    &#x3C;groupId>org.apache.avro&#x3C;/groupId>
@@ -63,7 +63,7 @@ schema-registry:
 
 <details>
 
-<summary>repositories</summary>
+<summary><mark style="color:purple;">repositories</mark></summary>
 
 ```xml
 <repository>
@@ -76,7 +76,7 @@ schema-registry:
 
 <details>
 
-<summary>plugins</summary>
+<summary><mark style="color:purple;">plugins</mark></summary>
 
 ```
 <plugin>
@@ -121,7 +121,7 @@ schema-registry:
 
 <details>
 
-<summary>avsc 文件</summary>
+<summary><mark style="color:purple;">avsc 文件</mark></summary>
 
 ```json
 {
@@ -171,13 +171,14 @@ spring:
         bindings:
           send-out-0: send-org
       bindings:
-        send-org:
+        send-out-0:
           destination: orgChangeTopic
+          group: organization
           producer:
             useNativeEncoding: true
       kafka:
         bindings:
-          send-org:
+          send-out-0:
             producer:
               configuration:
                 schema.registry.url: http://192.168.10.110:8074
@@ -194,17 +195,16 @@ spring:
   cloud:
     stream:
       function:
-        definition: consumer
-        bindings:
-          consumer-in-0: consumer-org
+        definition: consume
       bindings:
-        consumer-org:
+        consume-in-0:
           destination: orgChangeTopic
+          group: license
           consumer:
             useNativeEncoding: true
       kafka:
         bindings:
-          consumer-org:
+          consume-in-0:
             consumer:
               configuration:
                 schema.registry.url: http://192.168.10.110:8074

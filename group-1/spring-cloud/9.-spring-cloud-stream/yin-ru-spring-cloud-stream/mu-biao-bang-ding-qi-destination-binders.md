@@ -21,8 +21,6 @@ Binder Detection（Binder 检测）是 Spring Cloud Stream 的一个特性，用
 
 ### 类路径上存在多个 Binder 实现 <a href="#multiple-binders" id="multiple-binders"></a>
 
-When multiple binders are present on the classpath, the application must indicate which binder is to be used for each destination binding. Binder selection can either be performed globally, using the `spring.cloud.stream.defaultBinder` property (for example, `spring.cloud.stream.defaultBinder=rabbit`) or individually, by configuring the binder on each binding. For instance, a processor application (that has bindings named `input` and `output` for read and write respectively) that reads from Kafka and writes to RabbitMQ can specify the following configuration:
-
 当类路径上存在多个 Binder 实现时，应用程序必须指定要为每个目标绑定使用哪个 Binder：
 
 * 可以通过 **spring.cloud.stream.defaultBinder** 属性在全局范围内进行 Binder 选择（例如，**spring.cloud.stream.defaultBinder=rabbit**）
@@ -34,8 +32,6 @@ When multiple binders are present on the classpath, the application must indicat
     ```
 
 ### 连接到多个系统 <a href="#multiple-systems" id="multiple-systems"></a>
-
-By default, binders share the application’s Spring Boot auto-configuration, so that one instance of each binder found on the classpath is created. If your application should connect to more than one broker of the same type, you can specify multiple binder configurations, each with different environment settings.
 
 默认情况下，binders 共享应用程序的 Spring Boot 自动配置，因此**在类路径上找到的每个 binder 实现都会创建一个实例**。如果**应用程序需要连接到同一类型的多个代理服务器，可以指定多个 binder 配置，并为每个配置提供不同的环境设置。**
 

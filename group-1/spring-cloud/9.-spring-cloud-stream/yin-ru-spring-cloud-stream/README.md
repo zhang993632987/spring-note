@@ -6,8 +6,6 @@ Spring Cloud Stream是用于构建基于消息驱动微服务应用程序的框�
 
 ## 应用模型
 
-A Spring Cloud Stream application consists of a middleware-neutral core. The application communicates with the outside world by establishing _bindings_ between destinations exposed by the external brokers and input/output arguments in your code. Broker specific details necessary to establish bindings are handled by middleware-specific _Binder_ implementations.
-
 Spring Cloud Stream 应用程序由一个与中间件无关的核心组成，该应用通过在代码中建立**input/output**参数与**destination**（外部**代理**）之间的绑定，与外界进行通信。建立这些绑定所需的特定于代理的详细信息由中间件特定的**Binder**实现处理。
 
 <figure><img src="../../../../.gitbook/assets/SCSt-with-binder.png" alt=""><figcaption></figcaption></figure>

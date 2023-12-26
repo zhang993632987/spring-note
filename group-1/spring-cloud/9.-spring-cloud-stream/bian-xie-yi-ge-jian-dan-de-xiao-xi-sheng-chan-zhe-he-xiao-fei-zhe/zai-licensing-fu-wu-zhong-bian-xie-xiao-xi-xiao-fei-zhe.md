@@ -1,10 +1,6 @@
-# Writing the message consumer in the licensing service
-
-For this example, the licensing service will consume the message published by the organization service.&#x20;
+# 在licensing服务中编写消息消费者
 
 ## 添加依赖
-
-To begin, we need to add our Spring Cloud Stream dependencies to the licensing services pom.xml file.
 
 ```xml
 <dependency>
@@ -35,19 +31,12 @@ spring:
     stream:
       function:
         definition: consumer
-        bindings:
-          consumer-in-0: consumer-org
       bindings:
-        consumer-org:
+        consumer-in-0:
           destination: orgChangeTopic
-          consumer:
-            useNativeEncoding: true
+          contentType: application/json
+          group: license
       kafka:
-        bindings:
-          consumer-org:
-            consumer:
-              configuration:
-                value.deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-          brokers: 192.168.10.110:9094
-          requiredAcks: all
+        brokers: 192.168.10.110:9094
+        requiredAcks: all
 ```
