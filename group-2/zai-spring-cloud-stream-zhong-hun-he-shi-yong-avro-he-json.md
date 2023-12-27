@@ -191,3 +191,17 @@ skipOutputConversion 决定了是否对消息的载荷（payload）使用 Messag
    1. **如果 useNativeEncoding 为 false，则使用 MessageConverter 将消息的载荷序列化成二进制数组**（由 JsonMapper 完成）
    2. 如果 useNativeEncoding 为 true，不对消息载荷进行处理。
 2. 然后，**将消息 Message 交给 KafkaTemplate，由 KafkaTemplate 使用配置的 value.serializer 进行序列化**，如果没有设置，**默认为 ByteArraySerializer**。
+
+## 解决方案
+
+根据上述对问题的分析，只需要名为 sendAvro-out-0 的 binding 下增加 contentType 的配置即可解决问题：
+
+```yaml
+sendAvro-out-0:
+  destination: orgChangeTopicAvro
+  contentType: text/plain
+  producer:
+    useNativeEncoding: true
+```
+
+增加 contentType 配置后，便可以不命中缓存。
