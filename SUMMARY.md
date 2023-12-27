@@ -167,3 +167,4 @@
 
 * [resilience4j](group-2/resilience4j.md)
 * [oauth2](group-2/oauth2.md)
+* [在Spring Cloud Stream中混合使用avro和JSON](group-2/zai-spring-cloud-stream-zhong-hun-he-shi-yong-avro-he-json.md)
