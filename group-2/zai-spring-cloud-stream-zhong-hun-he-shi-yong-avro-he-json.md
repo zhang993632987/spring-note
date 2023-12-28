@@ -199,7 +199,7 @@ skipOutputConversion 决定了是否对消息的载荷（payload）使用 Messag
 ```yaml
 sendAvro-out-0:
   destination: orgChangeTopicAvro
-  contentType: text/plain
+  contentType: application/*+avro
   producer:
     useNativeEncoding: true
 ```

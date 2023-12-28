@@ -197,8 +197,9 @@ spring:
         consume-in-0:
           destination: orgChangeTopic
           group: license
+          contentType: application/*+avro
           consumer:
-            useNativeEncoding: true
+            useNativeDecoding: true
       kafka:
         bindings:
           consume-in-0:
@@ -206,6 +207,7 @@ spring:
               configuration:
                 schema.registry.url: http://192.168.10.110:8074
                 value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+                specific.avro.reader: true
         binder:
           brokers: 192.168.10.110:9094
           requiredAcks: all
