@@ -46,21 +46,19 @@ By default, Zipkin uses an in-memory data store for storage.
 
 For this example, we’ll show you how to use Elasticsearch as a data store because we’ve already configured Elasticsearch. The only additional settings we need to add are the STORAGE\_TYPE and ES\_HOSTS variables in the environment section of our configuration file. The following code shows the complete Docker Compose registry:
 
-```
+```yaml
 zipkin: 
-    image: openzipkin/zipkin 
-    container_name: zipkin
-    depends_on: 
-      - elasticsearch
-    environment: 
-      - STORAGE_TYPE=elasticsearch
-      - "ES_HOSTS=elasticsearch:9300"
-    ports:
-      - "9411:9411"
-    networks:
-      backend:
-        aliases:
-          - "zipkin"
+  restart: always
+  image: openzipkin/zipkin:2.25
+  environment:
+    - STORAGE_TYPE=elasticsearch
+    - ES_HOSTS=elasticsearch:9200
+  ports:
+    - 9411:9411
+  depends_on:
+    - elasticsearch
+  networks:
+    - backend
 ```
 
 ## Setting tracing levels

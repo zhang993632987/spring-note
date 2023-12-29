@@ -2,7 +2,7 @@
 
 下图展示了用户令牌是如何通过网关、licensing 服务，然后传递到 organization 服务的：
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 1. 用户已经通过Keycloak服务器进行了身份认证，并调用了O-stock Web应用程序。
    * 用户的访问令牌存储在用户的会话中。

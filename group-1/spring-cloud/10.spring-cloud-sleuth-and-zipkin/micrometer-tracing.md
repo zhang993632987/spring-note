@@ -59,7 +59,7 @@ If your application already uses Micrometer, enabling this feature is as simple 
 
 If everything is set up correctly, any log statements written in our service application code will now include Spring Cloud Sleuth trace information. For example, figure 11.1 shows what the service’s output would look like if we were to issue an HTTP GET on the following endpoint in the organization service:
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 Spring Cloud Sleuth adds four pieces of information to each log entry. These four pieces are as follows:
 

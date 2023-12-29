@@ -166,8 +166,6 @@
     * [Micrometer Tracing](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/micrometer-tracing.md)
     * [Distributed tracing with Zipkin](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/distributed-tracing-with-zipkin.md)
     * [Log aggregation and Spring Cloud Sleuth](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/log-aggregation-and-spring-cloud-sleuth.md)
-    * [Page 3](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/page-3.md)
-    * [Page 4](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/page-4.md)
 
 ## Group 2
 
