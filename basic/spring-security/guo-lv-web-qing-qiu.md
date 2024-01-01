@@ -2,7 +2,7 @@
 
 Spring Security 借助一系列 Servlet Filter 来提供各种安全性功能。<mark style="color:blue;">**DelegatingFilterProxy**</mark> 是一个特殊的 Servlet Filter，它本身所做的工作并不多。只是<mark style="color:blue;">**将工作委托给一个 javax.servlet.Filter 实现类，这个实现类作为一个Bean注册在 Spring 应用的上下文中**</mark>， 如图所示：
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 > 如果你喜欢在传统的 web.xml 中配置 Servlet 和 Filter 的话，可以使用 \<filter> 元素，如下所示：
 >

@@ -4,13 +4,13 @@
 
 Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组的对象的概念。
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 注册客户端应用
 
 在Keycloak中，客户端是可以请求用户身份认证的实体。通常，客户端是我们希望通过提供单一登录（SSO）解决方案来保护的应用程序或服务。
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 添加客户端角色
 
@@ -19,19 +19,19 @@ Realm（领域）是Keycloak中用来管理一组用户、凭据、角色和组�
 * USER
 * ADMIN
 
-<figure><img src="../../../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Credentials 页面
 
 既然我们已经完成了基本的客户端配置，让我们访问“**Credentials**”页面。该页面将显示身份认证过程所需的客户端密钥：
 
-<figure><img src="../../../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## 创建 realm roles(optional)
 
 这是一个可选步骤。如果你不想创建这些角色，可以直接创建用户。但是之后要识别和维护每个用户的角色可能会更困难。
 
-<figure><img src="../../../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
