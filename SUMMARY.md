@@ -167,10 +167,10 @@
       * [使用avro](group-1/spring-cloud/9.-spring-cloud-stream/bian-xie-yi-ge-jian-dan-de-xiao-xi-sheng-chan-zhe-he-xiao-fei-zhe/shi-yong-avro.md)
     * [Spring Cloud Stream 使用范例: 分布式缓存](group-1/spring-cloud/9.-spring-cloud-stream/spring-cloud-stream-shi-yong-fan-li-fen-bu-shi-huan-cun/README.md)
       * [使用Redis缓存](group-1/spring-cloud/9.-spring-cloud-stream/spring-cloud-stream-shi-yong-fan-li-fen-bu-shi-huan-cun/shi-yong-redis-huan-cun.md)
-  * [10.Spring Cloud Sleuth and Zipkin](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/README.md)
-    * [Micrometer Tracing](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/micrometer-tracing.md)
-    * [Distributed tracing with Zipkin](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/distributed-tracing-with-zipkin.md)
-    * [Log aggregation and Spring Cloud Sleuth](group-1/spring-cloud/10.spring-cloud-sleuth-and-zipkin/log-aggregation-and-spring-cloud-sleuth.md)
+  * [10.Spring Cloud Sleuth 和 Zipkin](group-1/spring-cloud/10.spring-cloud-sleuth-he-zipkin/README.md)
+    * [Micrometer Tracing](group-1/spring-cloud/10.spring-cloud-sleuth-he-zipkin/micrometer-tracing.md)
+    * [分布式追踪](group-1/spring-cloud/10.spring-cloud-sleuth-he-zipkin/fen-bu-shi-zhui-zong.md)
+    * [日志聚合](group-1/spring-cloud/10.spring-cloud-sleuth-he-zipkin/ri-zhi-ju-he.md)
 
 ## Group 2
 
