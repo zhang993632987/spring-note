@@ -1,4 +1,4 @@
-# 5.4.1 使用Spring Discovery Client查找服务实例
+# 使用Spring Discovery Client查找服务实例
 
 <mark style="color:blue;">**Spring Discovery Client**</mark>提供了对Load Balancer及其注册服务的<mark style="color:blue;">**最低层次**</mark>访问。使用Discovery Client，可以查询所有服务以及这些服务对应的URL。
 
@@ -63,8 +63,6 @@ Organization organization = organizationInstances.stream()
                 ).orElse(null);
 ```
 
-{% hint style="info" %}
-在上述代码中实例化了RestTemplate类。
-
-一旦在应用程序类中通过<mark style="color:blue;">**@EnableDiscoveryClient**</mark>启用了Spring Discovery Client，由Spring框架管理的所有Rest模板都将**向这些RestTemplate实例注入一个启用了Load Balancer的拦截器**。这个拦截器将改变使用RestTemplate类创建URL的行为。直接实例化RestTemplate类可以避免这种行为。
-{% endhint %}
+> 在上述代码中实例化了RestTemplate类。
+>
+> 一旦在应用程序类中通过<mark style="color:blue;">**@EnableDiscoveryClient**</mark>启用了Spring Discovery Client，由Spring框架管理的所有Rest模板都将**向这些RestTemplate实例注入一个启用了Load Balancer的拦截器**。这个拦截器将改变使用RestTemplate类创建URL的行为。直接实例化RestTemplate类可以避免这种行为。

@@ -1,4 +1,4 @@
-# 5.5 集群
+# 集群
 
 ## 服务端
 
@@ -37,9 +37,7 @@ spring:
 
 <figure><img src="../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-{% hint style="info" %}
-Eureka服务端会将服务信息保存在内存之中，当以集群模式运行时，每一个Eureka服务端都会存在完整的服务信息，Eureka服务之间通过点对点的方式进行信息的同步。
-{% endhint %}
+> Eureka服务端会将服务信息保存在内存之中，当以集群模式运行时，每一个Eureka服务端都会存在完整的服务信息，Eureka服务之间通过点对点的方式进行信息的同步。
 
 ## 客户端
 

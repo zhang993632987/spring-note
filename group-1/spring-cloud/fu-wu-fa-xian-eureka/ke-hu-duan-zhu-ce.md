@@ -1,6 +1,4 @@
-# 5.3 客户端注册
-
-通过Eureka注册一个基于Spring Boot的微服务是非常简单的。
+# 客户端注册
 
 ## 1. 添加依赖
 
@@ -28,23 +26,21 @@ eureka:
 
 * **eureka.instance.preferIpAddress**属性告诉Eureka，你想将服务的<mark style="color:blue;">**IP地址**</mark>而不是服务的**主机名**注册到Eureka。
 * **eureka.client.registerWithEureka**属性是一个触发器，告知Spring Eureka客户端通过Eureka进行注册。
-* **eureka.client.fetchRegistry**属性用于告知Spring Eureka客户端以获取注册表的本地副本。将此属性设置为 true将**在本地缓存注册表**，而不是每次查找服务都调用Eureka服务。每隔30秒，客户端软件就会重新联系Eureka服务，以便查看注册表是否有任何变化。
+* **eureka.client.fetchRegistry**属性用于告知Spring Eureka客户端以获取注册表的本地副本。
+  * 将此属性设置为 true将**在本地缓存注册表**，而不是每次查找服务都调用Eureka服务。
+  * 每隔30秒，客户端软件就会重新联系Eureka服务，以便查看注册表是否有任何变化。
 * **eureka.client.serviceUrl.defaultZone**包含了客户端用于解析服务位置的Eureka服务的**列表**，该列表以逗号进行分隔。
 
-{% hint style="info" %}
-每个通过Eureka注册的服务都会有两个与之相关的组件：<mark style="color:blue;">**应用程序ID**</mark>和<mark style="color:blue;">**实例ID**</mark>。
+> 每个通过Eureka注册的服务都会有两个与之相关的组件：<mark style="color:blue;">**应用程序ID**</mark>和<mark style="color:blue;">**实例ID**</mark>。
+>
+> * **应用程序ID**用于表示一组服务实例。在Spring Boot微服务中，应用程序ID始终是由**spring. application.name**属性设置的值。
+> * **实例ID**是一个随机生成的数字，用于代表单个服务实例。
 
-* **应用程序ID**用于表示一组服务实例。在Spring Boot微服务中，应用程序ID始终是由**spring. application.name**属性设置的值。
-* **实例ID**是一个随机自动生成的数字，用于代表单个服务实例。
-{% endhint %}
-
-{% hint style="info" %}
-<mark style="color:blue;">**为什么偏向于IP地址?**</mark>
-
-<mark style="color:orange;">**在默认情况下，Eureka注册通过主机名联系它的服务。**</mark>这种方式在基于服务器的环境中运行良好，在这样的环境中，服务会被分配一个DNS支持的主机名。但是，在基于容器的部署（如Docker）中，容器将以随机生成的主机名启动，并且该容器没有DNS条目。如果你没有将eureka.instance. preferIpAddress设置为true，那么你的客户端应用程序将无法正确地解析主机名的位置，因为该容器不存在DNS条目。设置preferIpAddress属性将通知Eureka服务，客户端想要通过IP地址进行通告。
-
-**基于云的微服务应该是短暂的和无状态的。它们可以随意启动和关闭，所以IP地址更适合这些类型的服务。**
-{% endhint %}
+> ## <mark style="color:blue;">**为什么偏向于IP地址?**</mark>
+>
+> <mark style="color:orange;">**在默认情况下，Eureka注册通过主机名联系它的服务。**</mark>这种方式在基于服务器的环境中运行良好，在这样的环境中，服务会被分配一个DNS支持的主机名。但是，**在基于容器的部署（如Docker）中，容器将以随机生成的主机名启动，并且该主机名不存在对应的DNS条目。**如果你没有将eureka.instance. preferIpAddress设置为true，那么你的客户端应用程序将无法正确地解析主机名的位置，因为该容器不存在DNS条目。设置preferIpAddress属性将通知Eureka服务，客户端想要通过IP地址进行通告。
+>
+> **基于云的微服务应该是短暂的和无状态的。它们可以随意启动和关闭，所以IP地址更适合这些类型的服务。**
 
 ## 3. 查看注册的服务
 
@@ -52,7 +48,7 @@ eureka:
 
 <details>
 
-<summary>http://localhost:8070/eureka/apps</summary>
+<summary><mark style="color:purple;">http://localhost:8070/eureka/apps</mark></summary>
 
 {% code overflow="wrap" %}
 ```xml
@@ -104,7 +100,7 @@ eureka:
 
 <details>
 
-<summary>http://localhost:8070/eureka/apps/license-service</summary>
+<summary><mark style="color:purple;">http://localhost:8070/eureka/apps/license-service</mark></summary>
 
 {% code overflow="wrap" %}
 ```xml
@@ -150,7 +146,9 @@ eureka:
 
 </details>
 
-Eureka服务返回的默认格式是XML。Eureka还可以将数据作为JSON净荷返回，但是必须将HTTP首部**Accept**设置为**application/json**。
+> Eureka服务返回的默认格式是XML。
+>
+> Eureka可以将数据作为JSON净荷返回，但是必须将HTTP首部**Accept**设置为**application/json**。
 
 ### Eureka的仪表盘
 
@@ -158,10 +156,12 @@ Eureka服务返回的默认格式是XML。Eureka还可以将数据作为JSON净�
 
 <figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-{% hint style="danger" %}
-<mark style="color:red;">**当服务通过Eureka注册时，Eureka将在30秒内等待3次连续的健康检查，然后服务才能变得可用。**</mark>
+{% hint style="warning" %}
+## <mark style="color:orange;">注意</mark>
 
-这一点在我们在**Docker环境中**运行的代码示例中很明显，因为Eureka服务和应用程序服务都是在同一时间启动的。请注意，在启动应用程序后，尽管服务本身已经启动，但你可能会收到关于未找到服务的404错误。在这种情况下，请等待30秒，然后再尝试调用服务。
+<mark style="color:blue;">**当服务通过Eureka注册时，Eureka将在30秒内等待3次连续的健康检查，然后服务才能变得可用。**</mark>
+
+这一点在我们在**Docker环境中**运行的代码示例中很明显，因为Eureka服务和应用程序服务都是在同一时间启动的。请注意，<mark style="color:orange;">**在启动应用程序后，尽管服务本身已经启动，但你可能会收到关于未找到服务的404错误。在这种情况下，请等待30秒，然后再尝试调用服务。**</mark>
 
 **在生产环境中，你的Eureka服务已经在运行。如果你正在部署现有的服务，那么旧服务仍然可以用于接收请求。**
 {% endhint %}
