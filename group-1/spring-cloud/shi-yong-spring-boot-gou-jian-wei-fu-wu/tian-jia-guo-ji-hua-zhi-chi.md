@@ -1,36 +1,38 @@
-# 3.3 添加国际化支持
+# 添加国际化支持
 
 ## 1. 配置locale
 
 ```properties
-spring.web.locale=zh
-spring.web.locale-resolver=accept_header
+spring:
+  web:
+    locale: zh
+    locale-resolver: accept_header
 ```
 
 spring boot默认使用<mark style="color:blue;">**AcceptHeaderLocaleResolver**</mark>支持国际化。
 
 ## 2. 在/src/main/resources源文件夹下创建以下文件：
 
-*   messages\_en.properties
+*   messages.properties
 
     ```properties
     license.create.message=%s
     license.update.message=%s
     license.delete.message=%s, %s
     ```
-*   messages\_zh.properties
+*   messages\_en.properties
 
     ```properties
-    license.create.message = License created %s
-    license.update.message = License %s updated
-    license.delete.message = Deleting license with id %s for the organization %s
+    license.create.message=License created %s
+    license.update.message=License %s updated
+    license.delete.message=Deleting license with id %s for the organization %s
     ```
-*   messages.properties
+*   messages\_zh.properties
 
     ```properties
     license.create.message=许可证 %s 被创建
     license.update.message=许可证 %s 被更新
-    license.delete.message = 删除组织 %s 下的id为 %s 的许可证
+    license.delete.message=删除组织 %s 下的id为 %s 的许可证
     ```
 
 ## 3. 修改Controller

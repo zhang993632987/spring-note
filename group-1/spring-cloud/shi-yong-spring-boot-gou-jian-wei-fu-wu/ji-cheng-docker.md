@@ -1,4 +1,4 @@
-# 3.3 集成docker
+# 集成docker
 
 ## 1. 添加docker的Maven插件
 
@@ -21,7 +21,6 @@
 
 ```xml
 <properties>
-    <java.version>11</java.version>
     <docker.image.prefix>192.168.10.110:5000</docker.image.prefix>
 </properties>
 ```
@@ -37,24 +36,34 @@ Dockerfile文件的存放路径与pom.xml同级！
 {% endhint %}
 
 ```docker
-FROM eclipse-temurin:11-jre as builder
-WORKDIR application
+FROM eclipse-temurin:17-jre as builder
+
+WORKDIR /opt/java/openjdk/lib/security
+COPY server.pem .
+RUN keytool -import -alias keycloak -file server.pem -keystore cacerts \
+        -storepass changeit -noprompt
+
+WORKDIR /application
 # 应用程序的JAR文件
 ARG JAR_FILE=target/*.jar
 # 将应用程序的JAR文件添加到容器中
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
-FROM eclipse-temurin:11-jre
-WORKDIR application
-COPY --from=builder application/dependencies/ ./
-COPY --from=builder application/spring-boot-loader/ ./
-COPY --from=builder application/snapshot-dependencies/ ./
-COPY --from=builder application/application/ ./
+FROM eclipse-temurin:17-jre
+
+WORKDIR /opt/java/openjdk/lib/security
+COPY --from=builder /opt/java/openjdk/lib/security/cacerts ./
+
+WORKDIR /application
+
+COPY --from=builder /application/dependencies/ ./
+COPY --from=builder /application/spring-boot-loader/ ./
+COPY --from=builder /application/snapshot-dependencies/ ./
+COPY --from=builder /application/application/ ./
 
 # 开放端口
 EXPOSE 8080 8081
-
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 ```
 

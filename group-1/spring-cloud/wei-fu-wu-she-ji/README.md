@@ -1,7 +1,9 @@
-# 2. 微服务设计
+# 微服务设计
 
 <mark style="color:orange;">**如果没有正确地管理微服务的设计、实现和维护，那么它们很快就会成为一个问题**</mark>。当我们开始采用微服务解决方案时，必须应用<mark style="color:blue;">**最佳实践**</mark>来保持架构尽可能高效和可伸缩，以避免产品内部的性能问题、瓶颈或操作问题。坚持应用最佳实践也能让新开发人员更容易跟上系统的开发速度。
 
 {% hint style="danger" %}
-### <mark style="color:red;">**一个系统分布得越广，它可能发生故障的地方就越多。**</mark>
+### <mark style="color:red;">警告</mark>
+
+<mark style="color:red;">**一个系统分布得越广，它可能发生故障的地方就越多。**</mark>
 {% endhint %}

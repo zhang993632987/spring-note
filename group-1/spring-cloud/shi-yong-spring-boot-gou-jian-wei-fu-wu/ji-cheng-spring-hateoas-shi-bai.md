@@ -1,4 +1,4 @@
-# 💔 3.4 集成Spring HATEOAS(失败)
+# 集成Spring HATEOAS(失败)
 
 <mark style="color:blue;">**HATEOAS**</mark>是Hypermedia as the Engine of Application State的缩写，意思是<mark style="color:blue;">**超媒体即应用状态引擎**</mark>。
 

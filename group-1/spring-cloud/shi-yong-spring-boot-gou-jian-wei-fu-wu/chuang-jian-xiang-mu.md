@@ -1,4 +1,4 @@
-# 3.1 创建项目
+# 创建项目
 
 ## 1. 新建项目
 
@@ -30,7 +30,6 @@
     <artifactId>spring-boot-starter-test</artifactId>
     <scope>test</scope>
 </dependency>
-
 ```
 
 ## 2.创建实例类License
@@ -176,17 +175,25 @@ public class LicenseController {
 }
 ```
 
-## 5. 配置application.properties
+## 5. 配置application.yml
 
 ```properties
-server.port=8080
+server:
+  port: 8080
 
 ############################## Actuator ##############################
-
-management.server.port=8081
-management.endpoints.web.base-path=/actuator
-management.endpoints.web.exposure.include=*
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
 ############################## Actuator ##############################
 ```
 
