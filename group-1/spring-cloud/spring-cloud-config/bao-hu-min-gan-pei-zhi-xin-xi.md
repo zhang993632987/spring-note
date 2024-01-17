@@ -1,4 +1,4 @@
-# 4.5 保护敏感配置信息
+# 保护敏感配置信息
 
 在默认情况下，Spring Cloud Config服务器端在应用程序配置文件中以纯文本格式存储所有属性，包括像数据库凭据这样的敏感信息。
 
@@ -8,9 +8,7 @@ Spring Cloud Config可以让我们轻松加密敏感属性。Spring Cloud Config
 
 对于Spring Cloud Config服务器端，对称加密密钥是一个由字母组成的字符串，你可以选择在Config服务器端的<mark style="color:blue;">**application.yml**</mark>文件中设置它，也可以选择通过操作系统环境变量<mark style="color:blue;">**ENCRYPT\_KEY**</mark>将它传递给服务。
 
-{% hint style="danger" %}
-<mark style="color:red;">**对称密钥的长度应该是12个或更多个字符，最好是一个随机的字符集。**</mark>
-{% endhint %}
+> <mark style="color:red;">**对称密钥的长度应该是12个或更多个字符，最好是一个随机的字符集。**</mark>
 
 ```yaml
 encrypt:
@@ -35,15 +33,13 @@ spring:
     password: '{cipher}4277f8d804f0e2286530d3855e8aceab5c8d75ac558bd731bbab45610f75f2a7'
 ```
 
-{% hint style="danger" %}
-在上面的这种配置下，REST接口可以获得的便是解密后的信息，根本没有起到保密的效果！
-
-此时，只能够保证敏感信息在Git仓库中的保密性，使得敏感信息能够在Git服务器安全共享。
-
-<img src="../../../.gitbook/assets/image (13).png" alt="" data-size="original">\
-
-
-增加配置<mark style="color:orange;">**spring.cloud.config.server.encrypt.enabled=false**</mark>，可以解决上述问题，此时需要将解密的工作**交由Config Client完成**：
-
-![](<../../../.gitbook/assets/image (14).png>)
-{% endhint %}
+> 在上面的这种配置下，REST接口可以获得的便是解密后的信息，根本没有起到保密的效果！
+>
+> 此时，只能够保证敏感信息在Git仓库中的保密性，使得敏感信息能够在Git服务器安全共享。
+>
+> <img src="../../../.gitbook/assets/image (13).png" alt="" data-size="original">\
+>
+>
+> 增加配置<mark style="color:orange;">**spring.cloud.config.server.encrypt.enabled=false**</mark>，可以解决上述问题，此时需要将解密的工作**交由Config Client完成**：
+>
+> ![](<../../../.gitbook/assets/image (14).png>)

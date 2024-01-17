@@ -1,6 +1,8 @@
-# 4.2.1 本地文件系统
+# 本地文件系统
 
 {% hint style="danger" %}
+## <mark style="color:red;">**警告**</mark>
+
 <mark style="color:red;">**不要在中大型云应用程序中使用基于文件系统的解决方案!**</mark>
 
 使用文件系统方法，意味着你要为想要访问应用程序配置数据的所有Config服务器端实现共享文件挂载点。
@@ -10,8 +12,8 @@
 
 在application.yml文件中增加相关配置信息，包括:
 
-* spring.profiles.active=native
-* spring.cloud.config.server.native.search-locations=classpath:/config
+* **spring.profiles.active=native**
+* **spring.cloud.config.server.native.search-locations=classpath:/config**
 
 ```yaml
 server:
@@ -32,7 +34,7 @@ classpath属性使得Spring Cloud Config服务器端在**src/main/resources/conf
 
 ## 2. 创建服务的配置文件
 
-我们将为以下3个环境创建应用程序配置数据：在本地运行服务时的**默认环境**、**开发环境**和**生产环境**。
+为以下3个环境创建应用程序配置数据：**默认环境**、**开发环境**和**生产环境**。
 
 应用程序配置文件的命名约定是“<mark style="color:orange;">**应用程序名称-环境名称.properties**</mark>”或“<mark style="color:orange;">**应用程序名称-环境名称.yml**</mark>”。环境名称由在服务启动时命令行传入的Spring Boot的<mark style="color:blue;">**profile**</mark>指定。
 
@@ -107,7 +109,7 @@ classpath属性使得Spring Cloud Config服务器端在**src/main/resources/conf
 
 <details>
 
-<summary>http://localhost:8071/<strong>license-service</strong>/default</summary>
+<summary><mark style="color:purple;">http://localhost:8071/<strong>license-service</strong>/default</mark></summary>
 
 ```json
 {
@@ -136,7 +138,7 @@ classpath属性使得Spring Cloud Config服务器端在**src/main/resources/conf
 
 <details>
 
-<summary>http://localhost:8071/<strong>license-service</strong>/dev</summary>
+<summary><mark style="color:purple;">http://localhost:8071/<strong>license-service</strong>/dev</mark></summary>
 
 {% code overflow="wrap" %}
 ```json
@@ -180,7 +182,7 @@ classpath属性使得Spring Cloud Config服务器端在**src/main/resources/conf
 
 <details>
 
-<summary>http://localhost:8071/<strong>license-service</strong>/prod</summary>
+<summary><mark style="color:purple;">http://localhost:8071/<strong>license-service</strong>/prod</mark></summary>
 
 ```json
 {
@@ -215,8 +217,6 @@ classpath属性使得Spring Cloud Config服务器端在**src/main/resources/conf
 
 </details>
 
-{% hint style="info" %}
-如果我们仔细观察，会看到在我们**选择dev端点**时，**Spring Cloud Config服务器端返回的是**<mark style="color:blue;">**默认配置**</mark>**和**<mark style="color:blue;">**开发环境下的配置**</mark>。
+仔细观察，会看到在**选择dev端点**时，**Spring Cloud Config服务器端返回的是**<mark style="color:blue;">**默认配置**</mark>**和**<mark style="color:blue;">**开发环境下的配置**</mark>。
 
 Spring Cloud Config返回两组配置信息的原因是：Spring框架实现了一种用于解决问题的层次结构机制。<mark style="color:orange;">**当Spring框架解决问题时，它将先查找默认属性文件中定义的属性，然后用特定环境的值（如果存在）去覆盖默认值。**</mark>
-{% endhint %}

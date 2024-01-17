@@ -1,4 +1,4 @@
-# 4.2.2 Git
+# Git
 
 ## 1. 修改application.yml
 
@@ -20,17 +20,23 @@
 </strong><strong>          basedir: file:///F:/tmp
 </strong></code></pre>
 
-*   spring.profiles.active=git
+*   **spring.profiles.active=git**
 
     <mark style="color:blue;">**使用git作为后端**</mark>，存储配置信息。
 *   spring.cloud.config.server.git.search-locations={application}
 
-    <mark style="color:blue;">**指定搜索路径**</mark>，可以使用占位符**{application}**、**{profile}**和**{label}**，其中application表示客户端的应用名称（spring.application.name），profile为客户端的环境（spring.profiles.active），label指示分支版本（spring.cloud.config.label）
-*   spring.cloud.config.server.git.uri=https://gitee.com/zhang993632987/config
+    <mark style="color:blue;">**指定搜索路径**</mark>，可以使用占位符**{application}**、**{profile}**和**{label}**，其中：
+
+    * **application**表示客户端的应用名称（**spring.application.name**）
+    * **profile**为客户端的环境（**spring.profiles.active**）
+    * **label**指示分支版本（**spring.cloud.config.label**）
+*   **spring.cloud.config.server.git.uri=https://gitee.com/zhang993632987/config**
 
     <mark style="color:blue;">**仓库地址**</mark>
 
     {% hint style="info" %}
+    ## <mark style="color:blue;">提示</mark>
+
     可以使用本地仓库，例如：file:///F:\self-learning\config-local，该地址必须是一个本地git仓库，需要经过下述命令处理：
 
     ```bash
