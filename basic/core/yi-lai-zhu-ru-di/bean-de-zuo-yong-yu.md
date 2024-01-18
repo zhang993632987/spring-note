@@ -1,4 +1,4 @@
-# 1.3 bean的作用域
+# bean的作用域
 
 Spring 定义了多种作用域，可以基于这些作用域创建 bean，包括：
 
@@ -28,31 +28,29 @@ public ShoppingCart cart() { ... }
 
 要注意的是，**@Scope** 同时还有一个 <mark style="color:blue;">**proxyMode 属性**</mark>**，它被设置成了 ScopedProxyMode.INTERFACES**。这个属性解决了将会话或请求作用域的 bean注入到单例 bean 中所遇到的问题。
 
-{% hint style="success" %}
-假设我们要将 ShoppingCart bean 注入到单例 StoreService bean 的 Setter 方法中，如下所示：
-
-{% code fullWidth="false" %}
-```java
-@Component
-public class StoreService {
-  @Autowired
-  public void setShoppingCart(ShoppingCart shoppingCart) {
-    this.shoppingCart = shoppingCart;
-  }
-}
-```
-{% endcode %}
-
-因为 **StoreService 是一个单例的 bean，会在 Spring 应用上下文加载的时候创建**。当它创建的时候，Spring 会试图将 ShoppingCart bean 注入到 setShoppingCart() 方法中。但是 ShoppingCart bean 是会话作用域的，此时并不存在。直到某个用户进入系统，创建了会话之后，才会出现 ShoppingCart 实例。
-
-另外，系统中将会有多个 ShoppingCart 实例：每个用户一个。我们并不想让 Spring 注入某个固定的 ShoppingCart 实例到 StoreService 中。我们希望的是当 StoreService 处理购物车功能时，它所使用的 ShoppingCart 实例恰好是当前会话所对应的那一个。
-
-Spring 并不会将实际的 ShoppingCart bean 注入到 StoreService 中， Spring 会注入一个到 ShoppingCart bean 的代理，如图所示。
-
-<img src="../../../.gitbook/assets/会话作用域.jpg" alt="" data-size="original">
-
-这个代理会暴露与 ShoppingCart 相同的方法，所以 StoreService 会认为它就是一个购物车。但是，**当 StoreService 调用 ShoppingCart 的方法时，代理会对其进行懒解析并将调用委托给会话作用域内真正的 ShoppingCart bean**。
-{% endhint %}
+> 假设我们要将 ShoppingCart bean 注入到单例 StoreService bean 的 Setter 方法中，如下所示：
+>
+> {% code fullWidth="false" %}
+> ```java
+> @Component
+> public class StoreService {
+>   @Autowired
+>   public void setShoppingCart(ShoppingCart shoppingCart) {
+>     this.shoppingCart = shoppingCart;
+>   }
+> }
+> ```
+> {% endcode %}
+>
+> 因为 **StoreService 是一个单例的 bean，会在 Spring 应用上下文加载的时候创建**。当它创建的时候，Spring 会试图将 ShoppingCart bean 注入到 setShoppingCart() 方法中。但是 ShoppingCart bean 是会话作用域的，此时并不存在。直到某个用户进入系统，创建了会话之后，才会出现 ShoppingCart 实例。
+>
+> 另外，系统中将会有多个 ShoppingCart 实例：每个用户一个。我们并不想让 Spring 注入某个固定的 ShoppingCart 实例到 StoreService 中。我们希望的是当 StoreService 处理购物车功能时，它所使用的 ShoppingCart 实例恰好是当前会话所对应的那一个。
+>
+> Spring 并不会将实际的 ShoppingCart bean 注入到 StoreService 中， Spring 会注入一个到 ShoppingCart bean 的代理，如图所示。
+>
+> <img src="../../../.gitbook/assets/会话作用域.jpg" alt="" data-size="original">
+>
+> 这个代理会暴露与 ShoppingCart 相同的方法，所以 StoreService 会认为它就是一个购物车。但是，**当 StoreService 调用 ShoppingCart 的方法时，代理会对其进行懒解析并将调用委托给会话作用域内真正的 ShoppingCart bean**。
 
 现在，我们带着对这个作用域的理解，讨论一下 proxyMode 属性。**如配置所示，proxyMode 属性被设置成了 ScopedProxyMode.INTERFACES，这表明这个代理要实现 ShoppingCart 接口，并将调用委托给实现 bean。**
 
