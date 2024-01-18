@@ -1,4 +1,4 @@
-# 3 面向切面编程（AOP）
+# 面向切面编程（AOP）
 
 <mark style="color:blue;">**DI 能够让相互协作的组件保持松散耦合，而面向切面编程（aspect-oriented programming，AOP）允许你把遍布应用各处的功能分离出来形成可重用的组件。**</mark>
 

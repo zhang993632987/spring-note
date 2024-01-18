@@ -1,4 +1,4 @@
-# 2 bean的生命周期
+# bean的生命周期
 
 1. Spring 对 bean 进行**实例化**；
 2. Spring 将值和 bean 的引用**注入**到 bean 对应的属性中；
