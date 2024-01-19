@@ -1,4 +1,4 @@
-# 6.4 ThreadLocal与Resilience4j
+# ThreadLocal与Resilience4j
 
 我们将在 ThreadLocal 中定义一些值，以查看它们是否能通过 Resilience4J 注解在方法之间传播。请记住，Java 的 ThreadLocal 允许我们创建只能由同一线程读取和写入的变量。
 
@@ -212,35 +212,33 @@ CircuitBreakerFactory Correlation id:
 * 对于利用**“**<mark style="color:purple;">**Resilience4j 注解”**</mark>标注的弹性保护方法，**ThreadLocal 中的关联 ID 依然能够保存下来**
 * 但是当使用**“**<mark style="color:purple;">**CircuitBreakerFactory”**</mark>来为方法增加弹性保护时，**ThreadLocal 中的关联 ID 却**<mark style="color:orange;">**并未**</mark>**能能够保存下来**
 
-{% hint style="success" %}
-## CircuitBreakerFactory 添加UserContext&#x20;
-
-* 首先，**在当前线程中获取 UserContext，并将 UserContext 放入一个子线程能够获取的共享变量中**
-* 然后，**通过共享变量的方式将 UserContext 放入子线程的 ThreadLocal 中**
-
-在此处使用的内部类与局部变量，如果不使用局部类，也可以使用成员变量或静态变量进行变量共享。
-
-```java
-@Override
-public Organization getOrganizationByCBFactory(String organizationId) {
-    long start = System.currentTimeMillis();
-    final UserContext context = UserContextHolder.getContext();
-    try {
-        return circuitBreakerFactory.create(ORGANIZATION_SERVICE).run(
-                () -> {
-                    UserContextHolder.setContext(context);
-                    log.debug("CircuitBreakerFactory Correlation id: {}",
-                            UserContextHolder.getContext().getCorrelationId());
-                    return organizationFeignClient.getOrganization(organizationId);
-                },
-                throwable -> getOrgBackup(organizationId, throwable)
-        );
-    } catch (Exception e) {
-        throw e;
-    } finally {
-        long end = System.currentTimeMillis();
-        log.error("共花费：" + (end - start));
-    }
-}
-```
-{% endhint %}
+> ## <mark style="color:orange;">CircuitBreakerFactory 添加UserContext</mark>&#x20;
+>
+> * 首先，**在当前线程中获取 UserContext，并将 UserContext 放入一个子线程能够获取的共享变量中**
+> * 然后，**通过共享变量的方式将 UserContext 放入子线程的 ThreadLocal 中**
+>
+> 在此处使用的内部类与局部变量，如果不使用局部类，也可以使用成员变量或静态变量进行变量共享。
+>
+> ```java
+> @Override
+> public Organization getOrganizationByCBFactory(String organizationId) {
+>     long start = System.currentTimeMillis();
+>     final UserContext context = UserContextHolder.getContext();
+>     try {
+>         return circuitBreakerFactory.create(ORGANIZATION_SERVICE).run(
+>                 () -> {
+>                     UserContextHolder.setContext(context);
+>                     log.debug("CircuitBreakerFactory Correlation id: {}",
+>                             UserContextHolder.getContext().getCorrelationId());
+>                     return organizationFeignClient.getOrganization(organizationId);
+>                 },
+>                 throwable -> getOrgBackup(organizationId, throwable)
+>         );
+>     } catch (Exception e) {
+>         throw e;
+>     } finally {
+>         long end = System.currentTimeMillis();
+>         log.error("共花费：" + (end - start));
+>     }
+> }
+> ```

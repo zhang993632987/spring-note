@@ -34,8 +34,8 @@
 
 在客户端弹性一章中，已经给出了 UserContextFilter、UserContext 和 UserContextHolder 的代码：
 
-{% content-ref url="../../6.-ke-hu-duan-dan-xing-mo-shi-resilience4j/6.4-threadlocal-yu-resilience4j.md" %}
-[6.4-threadlocal-yu-resilience4j.md](../../6.-ke-hu-duan-dan-xing-mo-shi-resilience4j/6.4-threadlocal-yu-resilience4j.md)
+{% content-ref url="../../ke-hu-duan-dan-xing-mo-shi-resilience4j/threadlocal-yu-resilience4j.md" %}
+[threadlocal-yu-resilience4j.md](../../ke-hu-duan-dan-xing-mo-shi-resilience4j/threadlocal-yu-resilience4j.md)
 {% endcontent-ref %}
 
 ### UserContextInterceptor

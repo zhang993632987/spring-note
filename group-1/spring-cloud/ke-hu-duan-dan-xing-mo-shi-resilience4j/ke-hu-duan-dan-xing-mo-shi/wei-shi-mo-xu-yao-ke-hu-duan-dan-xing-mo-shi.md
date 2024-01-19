@@ -6,7 +6,7 @@
 
 
 
-<figure><img src="../../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (18).png" alt="" width="493"><figcaption></figcaption></figure>
 
 在上图的情境中，三个应用以一种形式或另一种形式与三个不同的服务进行通信：
 
@@ -25,10 +25,10 @@
 
 如果在调用分布式资源的每个点（无论是对数据库的调用还是对服务的调用）都实施了断路器模式，上述情景是可以避免的。
 
-* 如果 organization 服务在调用 inventory 服务时使用了断路器模式，那么当 inventory 服务开始表现不佳时，断路器就会跳闸，使得调用过程快速失败而不会占用线程资源。如果 organization 服务具有多个端点，只有调用 inventory 服务的特定端点会受到影响。 organization 服务的其余功能仍然完好，可以满足用户请求。
-* licensing 服务从未直接调用 organization 服务。相反，当调用发生时，licensing 服务将调用委托给了断路器，断路器将接收到的调用封装在一个线程中（通常由线程池管理），该线程独立于调用者。通过将调用包装在线程中，客户端不再等待调用完成。相反，断路器监控线程，并在线程运行时间过长时终止调用。
+* 如果 organization 服务在调用 inventory 服务时使用了断路器模式，那么当 inventory 服务开始表现不佳时，断路器就会跳闸，使得调用过程快速失败而不会占用线程资源。如果 organization 服务具有多个端点，只有调用 inventory 服务的特定端点会受到影响。organization 服务的其余功能仍然完好，可以满足用户请求。
+* licensing 服务从未直接调用 organization 服务。相反，当调用发生时，licensing 服务将调用委托给了断路器，**断路器将接收到的调用封装在一个线程中（通常由线程池管理），该线程独立于调用者**。通过将调用包装在线程中，客户端不再等待调用完成。相反，断路器监控线程，并在线程运行时间过长时终止调用。
 
-<figure><img src="../../../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (19).png" alt="" width="540"><figcaption></figcaption></figure>
 
 图中展示了三种情景：
 
@@ -43,7 +43,7 @@
 
 断路器模式提供的关键优势包括以下几点：
 
-1. **快速失败（Fail Fast）：** 当远程服务出现降级时，应用程序会迅速失败，防止资源枯竭问题（这个问题通常会导致整个应用程序宕机）。在大多数故障情况下，部分失效比完全失效更为可取。
+1. **快速失败（Fail Fast）：** 当远程服务出现降级时，应用程序会迅速失败，防止资源枯竭问题（这个问题通常会导致整个应用程序宕机）。**在大多数故障情况下，部分失效比完全失效更为可取。**
 2. **优雅失败（Fail Gracefully）：** 通过设定超时并快速失败，断路器模式使我们能够以优雅的方式失败，或者寻找替代机制来满足用户的请求。
 3.  **无缝恢复（Recover Seamlessly）：** 由于断路器模式充当了中间人的角色，因此断路器可以定期检查所请求的资源是否已重新上线，并在无需人工干预的情况下重新启用对该资源的访问。
 

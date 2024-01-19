@@ -1,12 +1,16 @@
-# 6.3 限流模式
+# 限流模式
 
 ## 介绍
 
-Resilience4j提供了两种限流模式的实现：**AtomicRateLimiter** 和 **SemaphoreBasedRateLimiter**。限流模式的默认实现是 **AtomicRateLimiter**。
+Resilience4j提供了两种限流模式的实现：<mark style="color:blue;">**AtomicRateLimiter**</mark> 和 <mark style="color:blue;">**SemaphoreBasedRateLimiter**</mark>。
+
+限流模式的默认实现是 **AtomicRateLimiter**。
 
 ### **SemaphoreBasedRateLimiter**
 
-SemaphoreBasedRateLimiter 是最简单的实现。该实现基于一个 java.util.concurrent.Semaphore 存储当前的许可。在这种情况下，所有用户线程将调用 semaphore.tryAcquire 方法来触发对额外的内部线程的调用，该线程在新的 limitRefreshPeriod 开始时执行 semaphore.release。
+SemaphoreBasedRateLimiter 是最简单的实现。该实现使用一个 java.util.concurrent.Semaphore 存储当前的许可。
+
+在这种情况下，所有用户线程将调用 semaphore.tryAcquire 方法来触发对额外的内部线程的调用，该线程在新的 limitRefreshPeriod 开始时执行 semaphore.release。
 
 ### **AtomicRateLimiter**&#x20;
 
@@ -25,7 +29,7 @@ SemaphoreBasedRateLimiter 是最简单的实现。该实现基于一个 java.uti
 
 ## 配置
 
-对于这种模式，必须指定**超时持续时间**、**限制刷新和限制周期**。以下示例显示了包含重试配置参数的许可服务的 application.yml。
+对于这种模式，必须指定<mark style="color:blue;">**超时持续时间**</mark>、<mark style="color:blue;">**限制刷新**</mark>**和**<mark style="color:blue;">**限制周期**</mark>。以下示例显示了包含重试配置参数的许可服务的 application.yml。
 
 ```yaml
 resilience4j.ratelimiter:
@@ -37,9 +41,15 @@ resilience4j.ratelimiter:
       limitForPeriod: 5
 ```
 
-* **timeoutDuration**：线程等待许可的时间。默认值为5秒。
-* **limitRefreshPeriod**：限制刷新的周期。每个周期结束后，速率限制器将许可计数重置为 limitForPeriod 的值。默认值为500纳秒。
-* **limitForPeriod**：在一个刷新周期内可用的许可数。默认值为50。
+* <mark style="color:blue;">**timeoutDuration**</mark>：
+  * 线程等待许可的时间。
+  * 默认值为5秒。
+* <mark style="color:blue;">**limitRefreshPeriod**</mark>：
+  * 限制刷新的周期。每个周期结束后，速率限制器将许可计数重置为 limitForPeriod 的值。
+  * 默认值为500纳秒。
+* <mark style="color:blue;">**limitForPeriod**</mark>：
+  * 在一个刷新周期内可用的许可数。
+  * 默认值为50。
 
 ## 使用
 
@@ -54,10 +64,7 @@ public Organization getOrganizationByAnnotation(String organizationId) {
 }
 ```
 
-
-
-{% hint style="info" %}
-## <mark style="color:blue;">舱壁模式和限流模式的区别</mark>
+## 舱壁模式和限流模式的区别
 
 主要区别在于：
 
@@ -69,13 +76,12 @@ public Organization getOrganizationByAnnotation(String organizationId) {
 * 如果你想要阻塞并发调用，最好选择舱壁模式；
 * 如果你想要限制在特定时间段内的总调用次数，最好选择速率限制器。
 * 如果你同时考虑这两种情况，你也可以将它们结合使用。
-{% endhint %}
 
 ## Actuator 端点查看
 
 <details>
 
-<summary>http://localhost:8080/actuator/ratelimiters</summary>
+<summary><mark style="color:blue;">http://localhost:8080/actuator/ratelimiters</mark></summary>
 
 ```json
 {
@@ -89,7 +95,7 @@ public Organization getOrganizationByAnnotation(String organizationId) {
 
 <details>
 
-<summary>http://localhost:8080/actuator/ratelimiterevents</summary>
+<summary><mark style="color:blue;">http://localhost:8080/actuator/ratelimiterevents</mark></summary>
 
 
 
