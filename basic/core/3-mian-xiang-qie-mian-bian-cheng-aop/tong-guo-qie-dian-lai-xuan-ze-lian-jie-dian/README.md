@@ -18,6 +18,4 @@
 
 在 Spring 中尝试使用 AspectJ 其他指示器时，将会抛出 **IllegalArgumentException** 异常。
 
-> ## <mark style="color:orange;">注意：</mark>
->
 > <mark style="color:blue;">**Spring 支持的指示器中，只有 execution 指示器是实际执行匹配的，而其他的指示器都是用来限制匹配的。**</mark>
