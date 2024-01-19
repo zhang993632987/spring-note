@@ -1,4 +1,24 @@
-# 7. 网关Spring Cloud Gateway
+---
+cover: >-
+  https://images.unsplash.com/photo-1703065427700-6addd422c010?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MDU2Njk5MjF8&ixlib=rb-4.0.3&q=85
+coverY: 0
+layout:
+  cover:
+    visible: true
+    size: hero
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: true
+---
+
+# 网关Spring Cloud Gateway
 
 在分布式架构中，例如微服务，总会出现需要确保安全性、日志记录以及跟踪用户在多个服务调用中的行为等关键行为的情况。为了实现这些功能，我们希望能够在所有服务中一致地强制执行这些属性，而无需每个开发团队构建自己的解决方案。虽然在单个服务中直接构建这些能力可能通过<mark style="color:blue;">**使用共同的库或框架**</mark>来实现，但这种方法存在以下问题：
 
