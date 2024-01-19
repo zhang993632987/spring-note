@@ -23,7 +23,7 @@ http://localhost:8072/organization-service/v1/organization/100
 
 在这里，网关服务器通过 **http://localhost:8072** 端点访问。我们想要调用的服务（organization 服务）由端点路径中的第一部分表示。下图展示了这个映射的实际情况。
 
-<figure><img src="../../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 使用Spring Cloud Gateway与Eureka的美妙之处在于，我们不仅可以通过单一端点进行调用，而且还可以添加和删除服务的实例，而无需修改网关。
 

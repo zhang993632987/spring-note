@@ -1,6 +1,6 @@
 # 预过滤器
 
-我们将创建一个名为 **TrackingFilter** 的过滤器，它将检查所有传入网关的请求，并确定请求中是否存在一个名为 tmx-correlation-id 的HTTP头。tmx-correlation-id 头将包含一个唯一的全局标识符（GUID），可用于跟踪用户在多个微服务之间的请求。如果HTTP头中不存在tmx-correlation-id，TrackingFilter 将生成并设置关联ID。
+创建一个名为 **TrackingFilter** 的过滤器，它将检查所有传入网关的请求，并确定请求中是否存在一个名为 tmx-correlation-id 的HTTP头。tmx-correlation-id 头将包含一个唯一的全局标识符（GUID），可用于跟踪用户在多个微服务之间的请求。如果HTTP头中不存在tmx-correlation-id，TrackingFilter 将生成并设置关联ID。
 
 要在Spring Cloud Gateway中创建全局过滤器，我们需要**实现 GlobalFilter 类，然后覆盖 filter() 方法**。这个方法包含了过滤器实现的业务逻辑。
 
@@ -79,7 +79,7 @@ http://localhost:8072/organization-service/v1/organization/100
 
 一旦调用被提交，我们应该在控制台中看到一个日志消息，该消息会在流经过滤器时输出传入的关联ID：
 
-```
+```log
 tmx-correlation-id generated in tracking filter: 3fef7f9d-0234-4a16-9736-22f5e964
 ```
 

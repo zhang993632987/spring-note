@@ -4,9 +4,7 @@
 
 Spring Actuator 提供了一个基于 POST 的端点路由，即 **actuator/gateway/refresh**，调用此端点将触发重新加载路由配置。
 
-> ## **注意：**
->
-> <mark style="color:orange;">**经过实验，调用 actuator/gateway/refresh 端点并未触发路由配置加载（怀疑该端点的有效性可能需要让配置文件与应用放在一块，即放在 Gateway Server 的 application.yml 文件中其他单独的配置文件中）**</mark>
+> <mark style="color:orange;">**经过实验，调用 actuator/gateway/refresh 端点并未触发路由配置加载（怀疑该端点的有效性可能需要让配置文件与应用放在一块，即放在与 Gateway Server 的 application.yml 文件同路径下的其他的配置文件中）**</mark>
 >
 > <mark style="color:blue;">**但是，使用 @RefreshScope 和 actuator/refresh 确实可以刷新路由配置。**</mark>
 >

@@ -25,7 +25,7 @@ public class ResponseFilter implements GlobalFilter {
 }
 ```
 
-一旦我们实现了ResponseFilter，我们就可以启动我们的服务并使用它调用许可或组织服务。一旦服务完成，您将在调用的HTTP响应头中看到tmx-correlation-id。
+一旦我们实现了ResponseFilter，我们就可以启动我们的服务并使用它调用 licensing 或 organization 服务。一旦服务完成，您将在调用的HTTP响应头中看到tmx-correlation-id。
 
 ```log
 http://localhost:8072/organization-service/v1/organization/100

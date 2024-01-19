@@ -25,7 +25,7 @@
 
 ## 2. 添加配置属性
 
-在**/src/main/resources**文件夹中创建<mark style="color:blue;">**application.yml**</mark>文件。这个文件告诉Eureka服务监听什么端口、应用程序名称、Config Server地址。
+在**/src/main/resources**文件夹中创建<mark style="color:blue;">**application.yml**</mark>文件：
 
 ```yaml
 spring:

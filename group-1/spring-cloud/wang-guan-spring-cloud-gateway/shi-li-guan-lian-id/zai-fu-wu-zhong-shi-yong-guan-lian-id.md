@@ -40,7 +40,7 @@
 
 ### UserContextInterceptor
 
-UserContextInterceptor 类将关联ID注入到从 RestTemplate 实例执行的任何出站HTTP服务请求中。这是为了确保我们可以建立服务调用之间的关联。
+**UserContextInterceptor 类将关联ID注入到从 RestTemplate 实例执行的任何出站HTTP服务请求中**。这是为了确保我们可以建立服务调用之间的关联。
 
 为此，我们将使用一个Spring拦截器，并将其注入到RestTemplate 类中：
 
@@ -83,7 +83,7 @@ public class UserContextInterceptor implements
 
 </details>
 
-因为 **UserContextInterceptor 实现了 ClientHttpRequestInterceptor, RequestInterceptor 这两个接口**，所以它可以通过两种方式进行使用：
+因为 **UserContextInterceptor 实现了 ClientHttpRequestInterceptor 和 RequestInterceptor 这两个接口**，所以它可以通过两种方式进行使用：
 
 *   ## <mark style="color:blue;">**RestTemplate**</mark>
 
@@ -111,7 +111,7 @@ public class UserContextInterceptor implements
 
     因为 **UserContextInterceptor 实现了 **<mark style="color:blue;">**RequestInterceptor**</mark>** 接口，所以 UserContextInterceptor 这个Bean 会自动注入到** OpenFeign 客户端中。
 
-    正常使用 Feign 进行远程方法调用既可以完成关联 ID 的传播。
+    正常使用 Feign 进行远程方法调用即可以完成关联 ID 的传播。
 
 > ## 日志聚合、身份验证等功能
 >
