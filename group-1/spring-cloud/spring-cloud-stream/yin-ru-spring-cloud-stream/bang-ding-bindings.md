@@ -152,8 +152,6 @@ public class WebSourceApplication {
 }
 ```
 
-
-
 上述代码中注入了一个 StreamBridge bean，该 bean 负责将数据发送到输出绑定。请注意，前面的例子没有定义任何函数，这意味着没有提前创建绑定。**在这种情况下，StreamBridge 将在第一次调用其 send(..) 方法时创建输出绑定，并将其缓存以便后续重用。**
 
 > **StreamBridge 的动态特性：**如果指定的 binding 不存在，它将被自动创建和缓存，否则将使用现有绑定。
@@ -301,3 +299,25 @@ RetryTemplate 是 Spring Retry 库的一部分。以下是与 RetryTemplate 相�
 * backOffMultiplier：重试间隔的倍增因子。 默认值：2.0。
 * defaultRetryable：监听器抛出的未在 retryableExceptions 中列出的异常是否可重试。 默认值：true。
 * retryableExceptions：一个以 Throwable 类名为键、布尔值为值的映射。指定那些异常（及其子类）将或不将被重试。示例：spring.cloud.stream.bindings.input.consumer.retryableExceptions.java.lang.IllegalStateException=false。 默认值：空。
+
+## Binding 的可视化和控制 <a href="#binding_visualization_control" id="binding_visualization_control"></a>
+
+Spring Cloud Stream 支持通过 Actuator 端点进行绑定的可视化和控制。通过设置以下属性来启用绑定的 actuator 端点：
+
+```properties
+management.endpoints.web.exposure.include=bindings
+```
+
+一旦满足这些先决条件，当应用程序启动时，在日志中可以看到以下内容：
+
+```less
+: Mapped "{[/actuator/bindings/{name}],methods=[POST]. . .
+: Mapped "{[/actuator/bindings],methods=[GET]. . .
+: Mapped "{[/actuator/bindings/{name}],methods=[GET]. . .
+```
+
+要可视化当前的绑定，请访问以下 URL：
+
+```properties
+http://<host>:<port>/actuator/bindings
+```

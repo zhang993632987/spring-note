@@ -2,7 +2,7 @@
 
 Spring Cloud Stream 提供了 Binder 抽象，用于连接到外部中间件。
 
-## Binder 检测 <a href="#_binder_detection" id="_binder_detection"></a>
+## Binder 检测 <a href="#binder_detection" id="binder_detection"></a>
 
 Binder Detection（Binder 检测）是 Spring Cloud Stream 的一个特性，用于自动检测和选择合适的 Binder 实现，以连接到外部消息中间件。
 
@@ -73,24 +73,4 @@ spring:
                 host: <host2>
 ```
 
-## Binding 的可视化和控制 <a href="#binding_visualization_control" id="binding_visualization_control"></a>
-
-Spring Cloud Stream 支持通过 Actuator 端点进行绑定的可视化和控制。通过设置以下属性来启用绑定的 actuator 端点：
-
-```properties
-management.endpoints.web.exposure.include=bindings
-```
-
-一旦满足这些先决条件，当应用程序启动时，在日志中可以看到以下内容：
-
-```less
-: Mapped "{[/actuator/bindings/{name}],methods=[POST]. . .
-: Mapped "{[/actuator/bindings],methods=[GET]. . .
-: Mapped "{[/actuator/bindings/{name}],methods=[GET]. . .
-```
-
-要可视化当前的绑定，请访问以下 URL：
-
-```properties
-http://<host>:<port>/actuator/bindings
-```
+## &#x20;<a href="#binding_visualization_control" id="binding_visualization_control"></a>
