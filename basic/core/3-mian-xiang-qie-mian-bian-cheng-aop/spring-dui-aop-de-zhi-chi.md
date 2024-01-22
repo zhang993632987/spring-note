@@ -1,5 +1,7 @@
 # Spring 对 AOP 的支持
 
+> Spring AOP是基于动态代理的，**如果要代理的对象实现了某个接口，那么Spring AOP就会使用JDK动态代理去创建代理对象**；而**对于没有实现接口的对象，就无法使用JDK动态代理，转而使用CGlib动态代理生成一个被代理对象的子类来作为代理。**
+
 <mark style="color:orange;">**Spring AOP 构建在动态代理基础之上，因此，Spring 对 AOP 的支持局限于方法拦截。**</mark>
 
 *   [x] Spring 所创建的通知都是用标准的 Java 类编写的。
