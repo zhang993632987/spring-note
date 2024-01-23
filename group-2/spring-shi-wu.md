@@ -1,49 +1,55 @@
 # Spring 事务
 
-## **Spring事务管理的方式有几种？**
+Spring 事务支持两种使用方式，分别是：
 
-1.编程式事务：在代码中硬编码（不推荐使用）。
+* **编程式事务（代码方式）**
+* **声明式事务（注解方式）**
 
-2.声明式事务：在配置文件中配置（推荐使用），分为基于XML的声明式事务和基于注解的声明式事务。
-
-## **Spring事务中的隔离级别有哪几种？**
+## **Spring事务中的隔离级别**
 
 在TransactionDefinition接口中定义了五个表示隔离级别的常量：
 
-ISOLATION\_DEFAULT：使用后端数据库默认的隔离级别，Mysql默认采用的REPEATABLE\_READ隔离级别；Oracle默认采用的READ\_COMMITTED隔离级别。
-
-ISOLATION\_READ\_UNCOMMITTED：最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。
-
-ISOLATION\_READ\_COMMITTED：允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生
-
-ISOLATION\_REPEATABLE\_READ：对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。
-
-ISOLATION\_SERIALIZABLE：最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会用到该级别。
+* <mark style="color:blue;">**ISOLATION\_DEFAULT**</mark>：使用后端数据库默认的隔离级别，Mysql 默认采用的 REPEATABLE\_READ 隔离级别；Oracle 默认采用的 READ\_COMMITTED 隔离级别。
+* <mark style="color:blue;">**ISOLATION\_READ\_UNCOMMITTED**</mark>：最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。
+* <mark style="color:blue;">**ISOLATION\_READ\_COMMITTED**</mark>：允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生。
+* <mark style="color:blue;">**ISOLATION\_REPEATABLE\_READ**</mark>：对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。
+* <mark style="color:blue;">**ISOLATION\_SERIALIZABLE**</mark>：所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。但是这将严重影响程序的性能。通常情况下也不会用到该级别。
 
 ## **Spring事务中有哪几种事务传播行为？**
 
-在TransactionDefinition接口中定义了7个表示事务传播行为的常量。
+在 TransactionDefinition 接口中定义了7个表示事务传播行为的常量：
 
-支持当前事务的情况：
+*   <mark style="color:blue;">**PROPAGATION\_REQUIRED**</mark>：
 
-PROPAGATION\_REQUIRED：如果当前存在事务，则加入该事务；如果当前没有事务，则创建一个新的事务。
+    * 如果当前存在事务，则加入该事务；
+    * **如果当前没有事务，则创建一个新的事务。**
 
-PROPAGATION\_SUPPORTS： 如果当前存在事务，则加入该事务；如果当前没有事务，则以非事务的方式继续运行。
+    > 这是最常见的选择，也是 Spring 默认的事务的传播。
+* <mark style="color:blue;">**PROPAGATION\_SUPPORTS**</mark>：&#x20;
+  * 如果当前存在事务，则加入该事务；
+  * **如果当前没有事务，则以非事务的方式继续运行。**
+* <mark style="color:blue;">**PROPAGATION\_MANDATORY**</mark>：&#x20;
+  * 如果当前存在事务，则加入该事务；
+  * **如果当前没有事务，则抛出异常。**
+*   <mark style="color:blue;">**PROPAGATION\_REQUIRES\_NEW**</mark>：
 
-PROPAGATION\_MANDATORY： 如果当前存在事务，则加入该事务；如果当前没有事务，则抛出异常。（mandatory：强制性）。
+    * **创建一个新的事务；**
+    * 如果当前存在事务，则把当前事务挂起。
 
-不支持当前事务的情况：
+    > <mark style="color:orange;">**新建的事务将和被挂起的事务没有任何关系，是两个独立的事务，外层事务失败回滚之后，不能回滚内层事务执行的结果，内层事务失败抛出异常，外层事务捕获，也可以不处理回滚操作**</mark>
+* <mark style="color:blue;">**PROPAGATION\_NOT\_SUPPORTED**</mark>：&#x20;
+  * **以非事务方式运行；**
+  * 如果当前存在事务，则把当前事务挂起。
+* <mark style="color:blue;">**PROPAGATION\_NEVER**</mark>：
+  * &#x20;以非事务方式运行；
+  * **如果当前存在事务，则抛出异常。**
+*   <mark style="color:blue;">**PROPAGATION\_NESTED**</mark>：
 
-PROPAGATION\_REQUIRES\_NEW： 创建一个新的事务，如果当前存在事务，则把当前事务挂起。
+    * 如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；
+    * 如果当前没有事务，则按照PROPAGATION\_REQUIRED 执行。
 
-PROPAGATION\_NOT\_SUPPORTED： 以非事务方式运行，如果当前存在事务，则把当前事务挂起。
-
-PROPAGATION\_NEVER： 以非事务方式运行，如果当前存在事务，则抛出异常。
-
-其他情况：
-
-PROPAGATION\_NESTED： 如果当前存在事务，则创建一个事务作为当前事务的嵌套事务来运行；如果当前没有事务，则该取值等价于PROPAGATION\_REQUIRED。
-
-***
-
-著作权归@pdai所有 原文链接：https://pdai.tech/md/interview/x-interview-2.html
+    > 它使用了一个单独的事务，这个事务拥有多个可以回滚的保存点。
+    >
+    > 内部事务的回滚不会对外部事务造成影响。
+    >
+    > 它只对DataSourceTransactionManager事务管理器起效。
