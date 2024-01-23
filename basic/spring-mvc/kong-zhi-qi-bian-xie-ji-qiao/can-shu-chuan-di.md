@@ -1,4 +1,4 @@
-# 4.1 参数传递
+# 参数传递
 
 Spring MVC 允许以多种方式将客户端中的数据传送到控制器的处理器方法中，包括：
 
@@ -7,18 +7,18 @@ Spring MVC 允许以多种方式将客户端中的数据传送到控制器的处
 ```java
 @GetMapping("query")
 public String queryParam(
-  @RequestParam int page,
-  @RequestParam int count) {
-  return page + " : " + count;
+    @RequestParam int page,
+    @RequestParam int count) {
+    return page + " : " + count;
 }
 ```
 
 ```java
 @Test
 public void queryParam() throws Exception {
-  mockMvc.perform(
-    MockMvcRequestBuilders.get("/query?page=1&count=5")
-  ).andExpect(MockMvcResultMatchers.content().string("1 : 5"));
+      mockMvc.perform(
+          MockMvcRequestBuilders.get("/query?page=1&count=5")
+      ).andExpect(MockMvcResultMatchers.content().string("1 : 5"));
 }
 ```
 
@@ -40,11 +40,11 @@ public String form(PageBounds pageBounds) {
 ```java
 @Test
 public void form() throws Exception {
-  mockMvc.perform(
-    MockMvcRequestBuilders.get("/form")
-    .queryParam("page", "1")
-    .queryParam("count", "5")
-  ).andExpect(MockMvcResultMatchers.content().string("1 : 5"));
+      mockMvc.perform(
+          MockMvcRequestBuilders.get("/form")
+          .queryParam("page", "1")
+          .queryParam("count", "5")
+      ).andExpect(MockMvcResultMatchers.content().string("1 : 5"));
 }
 ```
 
@@ -53,17 +53,17 @@ public void form() throws Exception {
 ```java
 @GetMapping("path/{page}/{count}")
 public String pathVariable(
-  @PathVariable int page,
-  @PathVariable int count) {
-  return page + " : " + count;
+    @PathVariable int page,
+    @PathVariable int count) {
+    return page + " : " + count;
 }
 ```
 
 ```java
 @Test
 public void pathVariable() throws Exception {
-  mockMvc.perform(
-    MockMvcRequestBuilders.get("/path/1/5")
-  ).andExpect(MockMvcResultMatchers.content().string("1 : 5"));
+    mockMvc.perform(
+        MockMvcRequestBuilders.get("/path/1/5")
+    ).andExpect(MockMvcResultMatchers.content().string("1 : 5"));
 }
 ```

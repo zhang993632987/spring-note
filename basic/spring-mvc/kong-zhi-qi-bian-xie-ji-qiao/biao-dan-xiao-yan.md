@@ -1,6 +1,6 @@
-# 4.2 表单校验
+# 表单校验
 
-从 Spring 3.0 开 始，在 Spring MVC 中提供了对 Java 校验 API 的支持。在 Spring MVC 中要使用 Java 校验 API 的话，并不需要什么额外的配置。只要保证在类路径下包含这个 Java API 的实现即可，比如 Hibernate Validator。
+从 Spring 3.0 开 始，在 Spring MVC 中提供了对 Java 校验 API 的支持。**在 Spring MVC 中要使用 Java 校验 API 的话，并不需要什么额外的配置。只要保证在类路径下包含这个 Java API 的实现即可，比如 Hibernate Validator。**
 
 ```xml
 <dependency>
@@ -43,52 +43,50 @@ public class PageBounds {
 }
 ```
 
-然后，需要修改控制器中的方法，添加<mark style="color:blue;">**@Valid**</mark>注解和<mark style="color:blue;">**Errors**</mark>参数：
+然后，需要修改控制器中的方法，添加 <mark style="color:blue;">**@Valid**</mark> 注解和 <mark style="color:blue;">**Errors**</mark> 参数：
 
 ```java
 @GetMapping("form")
 public String form(
-  @Valid PageBounds pageBounds,
-  Errors errors) {
-  if (errors.hasErrors())
-    return "error";
-  return pageBounds.getPage() + " : " + pageBounds.getCount();
+    @Valid PageBounds pageBounds,
+    Errors errors) {
+    if (errors.hasErrors())
+        return "error";
+    return pageBounds.getPage() + " : " + pageBounds.getCount();
 }
 ```
 
-如果有校验出现错误的话，那么这些错误可以通过 Errors 对象进行访问。<mark style="color:red;">**Errors 参数要紧跟在带有 @Valid 注解的参数后面，@Valid 注解所标注的就是要检验的参数。**</mark>
+如果有校验出现错误的话，那么这些错误可以通过 Errors 对象进行访问。<mark style="color:orange;">**Errors 参数要紧跟在带有 @Valid 注解的参数后面，@Valid 注解所标注的就是要检验的参数。**</mark>
 
 ```java
 @Test
 public void formError() throws Exception {
-  mockMvc.perform(
-    MockMvcRequestBuilders.get("/form")
-    .queryParam("page", "1")
-    .queryParam("count", "0")
-  ).andExpect(MockMvcResultMatchers.content().string("error"));
+    mockMvc.perform(
+        MockMvcRequestBuilders.get("/form")
+            .queryParam("page", "1")
+            .queryParam("count", "0")
+    ).andExpect(MockMvcResultMatchers.content().string("error"));
 }
 ```
 
-{% hint style="info" %}
-**注意：**<mark style="color:red;">**当前不知道是何原因，单元测试无法得到期望的结果，但是使用利用tomcat容器可以得到期望的结果。**</mark>
-
-虽然原因未知，但是通过将依赖替换为下述访问，问题暂时得到解决：
-
-```xml
-<dependency>
-  <groupId>javax.validation</groupId>
-  <artifactId>validation-api</artifactId>
-  <version>1.1.0.Final</version>
-</dependency>
-<dependency>
-  <groupId>org.hibernate</groupId>
-  <artifactId>hibernate-validator</artifactId>
-  <version>5.1.0.Final</version>
-</dependency>
-<dependency>
-  <groupId>javax.el</groupId>
-  <artifactId>el-api</artifactId>
-  <version>2.2</version>
-</dependency>
-```
-{% endhint %}
+> <mark style="color:red;">**当前不知道是何原因，单元测试无法得到期望的结果，但是使用利用 tomcat 容器可以得到期望的结果。**</mark>
+>
+> 虽然原因未知，但是通过将依赖替换为下述访问，问题暂时得到解决：
+>
+> ```xml
+> <dependency>
+>   <groupId>javax.validation</groupId>
+>   <artifactId>validation-api</artifactId>
+>   <version>1.1.0.Final</version>
+> </dependency>
+> <dependency>
+>   <groupId>org.hibernate</groupId>
+>   <artifactId>hibernate-validator</artifactId>
+>   <version>5.1.0.Final</version>
+> </dependency>
+> <dependency>
+>   <groupId>javax.el</groupId>
+>   <artifactId>el-api</artifactId>
+>   <version>2.2</version>
+> </dependency>
+> ```

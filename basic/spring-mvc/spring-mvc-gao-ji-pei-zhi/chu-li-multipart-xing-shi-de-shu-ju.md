@@ -1,6 +1,6 @@
-# 3.2 处理 multipart 形式的数据
+# 处理 multipart 形式的数据
 
-一般表单提交所形成的请求结果是很简单的，就是以 `&` 符分割的多个 name-value 对。尽管这种编码形式很简单，并且对于典型的基于文本的表单提交也足够满足要求，但是对于传送二进制数据，如上传图片，就显得力不从心了。
+一般表单提交所形成的请求结果是很简单的，就是以 & 符分割的多个 name-value 对。尽管这种编码形式很简单，并且对于典型的基于文本的表单提交也足够满足要求，但是对于传送二进制数据，如上传图片，就显得力不从心了。
 
 与之不同的是，<mark style="color:blue;">**multipart 格式的数据会将一个表单拆分为多个部分（part），每个部分对应一个输入域**</mark>。在一般的表单输入域中，它所对应的部分中会放置文本型数据，但是如果上传文件的话，它所对应的部分可以是二进制，下面展现了 multipart 的请求体：
 
@@ -38,7 +38,7 @@ Content-Type: image/jpeg
 
 ## **1. 配置 multipart 解析器**
 
-<mark style="color:blue;">**引入Jakarta Commons FileUpload 的相关依赖：**</mark>
+### **引入Jakarta Commons FileUpload 的相关依赖**
 
 ```xml
 <dependency>
@@ -48,20 +48,20 @@ Content-Type: image/jpeg
 </dependency>
 ```
 
-<mark style="color:blue;">**配置 CommonsMultipartResolver：**</mark>
+### 配置 CommonsMultipartResolver
 
 CommonsMultipartResolver 不会强制要求设置<mark style="color:blue;">**临时文件路径**</mark>。<mark style="color:blue;">**默认情况下，这个路径就是 Servlet 容器的临时目录**</mark>。不过，通过设置 uploadTempDir 属性，我们可以将其指定为一个不同的位置：
 
 ```java
 @Bean
 public MultipartResolver multipartResolver2() throws IOException {
-  CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-  multipartResolver.setUploadTempDir(
-    new FileSystemResource("/tmp/study/uploads")
-  );
-  multipartResolver.setMaxUploadSize(2097152);
-  multipartResolver.setMaxInMemorySize(0);
-  return multipartResolver;
+    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+    multipartResolver.setUploadTempDir(
+      new FileSystemResource("/tmp/study/uploads")
+    );
+    multipartResolver.setMaxUploadSize(2097152);
+    multipartResolver.setMaxInMemorySize(0);
+    return multipartResolver;
 }
 ```
 
@@ -72,12 +72,11 @@ public MultipartResolver multipartResolver2() throws IOException {
 ```java
 @PostMapping("upload")
 public String upload(
-  @RequestPart MultipartFile picture,
-  @Valid PageBounds pageBounds,
-  @ApiIgnore Errors errors) {
-  if (errors.hasErrors())
-    return "error";
-  return "success";
+    @RequestPart MultipartFile picture,
+    @Valid PageBounds pageBounds, @ApiIgnore Errors errors) {
+    if (errors.hasErrors())
+        return "error";
+    return "success";
 }
 ```
 

@@ -1,4 +1,4 @@
-# 4.5 跨重定向请求传递数据
+# 跨重定向请求传递数据
 
 一般来讲，**当一个处理器方法完成之后，该方法所指定的模型数据将会复制到请求中，并作为请求中的属性，请求会转发（forward）到视图上进行渲染**。因为控制器方法和视图所处理的是同一个请求，所以在转发的过程中，请求属性能够得以保存。
 
@@ -19,11 +19,11 @@
 @RequestMapping(value="/register", method=POST)
 public String processRegistration(
     Spitter spitter, Model model) {
-  spitterRepository.save(spitter);
+    spitterRepository.save(spitter);
   
-  model.addAttribute("username", spitter.getUsername());
-  model.addAttribute("spitterId", spitter.getId());
-  return "redirect:/spitter/{username}";
+    model.addAttribute("username", spitter.getUsername());
+    model.addAttribute("spitterId", spitter.getId());
+    return "redirect:/spitter/{username}";
 }
 ```
 
@@ -31,7 +31,7 @@ public String processRegistration(
 
 除此之外，**模型中所有其他的原始类型值都可以添加到 URL 中作为查询参数**。
 
-按照上述代码，如果 username 属性的值是 habuma 并且 spitterId 属性的值是 42，那么结果得到的重定向 URL 路径将会是 `/spitter/habuma?spitterId=42`。
+按照上述代码，如果 username 属性的值是 habuma 并且 spitterId 属性的值是 42，那么结果得到的重定向 URL 路径将会是 /spitter/habuma?spitterId=42。
 
 通过路径变量和查询参数的形式跨重定向传递数据是很简单直接的方式，但它也有一定的限制。<mark style="color:blue;">**它只能用来发送简单的值，如 String 和数字的值**</mark><mark style="color:blue;">。</mark>在 URL 中，并没有办法发送更为复杂的值，但这正是 flash 属性能够提供帮助的领域。
 
@@ -45,7 +45,7 @@ public String processRegistration(
 
 实际上，Spring 也认为将跨重定向存活的数据放到会话中是一个很不错的方式。但是，Spring 认为我们并不需要管理这些数据，相反，Spring 提供了将数据发送为 <mark style="color:blue;">**flash 属性（flash attribute）**</mark>的功能。 按照定义，<mark style="color:blue;">**flash 属性会一直携带这些数据直到下一次请求，然后才会消失。**</mark>
 
-Spring 提供了<mark style="color:blue;">通过</mark> <mark style="color:blue;"></mark><mark style="color:blue;">**RedirectAttributes**</mark> <mark style="color:blue;"></mark><mark style="color:blue;">设置 flash 属性的方法</mark>，这是 Spring 3.1 引入的 Model 的一个子接口。RedirectAttributes 提供了 Model 的所有功能，除此之外，还有几个方法是用来设置 flash 属性的。 具体来讲，<mark style="color:blue;">**RedirectAttributes 提供了一组 addFlashAttribute() 方法来添加 flash 属性**</mark>。
+Spring 提供了通过 **RedirectAttributes** 设置 flash 属性的方法，这是 Spring 3.1 引入的 Model 的一个子接口。RedirectAttributes 提供了 Model 的所有功能，除此之外，还有几个方法是用来设置 flash 属性的。 具体来讲，<mark style="color:blue;">**RedirectAttributes 提供了一组 addFlashAttribute() 方法来添加 flash 属性**</mark>。
 
 ```java
 @RequestMapping(value="/register", method=POST)

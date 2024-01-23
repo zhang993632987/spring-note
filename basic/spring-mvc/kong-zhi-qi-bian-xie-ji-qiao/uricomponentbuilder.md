@@ -1,4 +1,4 @@
-# 4.6 UriComponentBuilder
+# UriComponentBuilder
 
 **当创建新资源的时候，将资源的 URL 放在响应的 Location 头部信息中，并返回给客户端是一种很好的方式。**
 
@@ -21,7 +21,8 @@ public ResponseEntity<Spittle> saveSpittle(
       .toUri();
   headers.setLocation(locationUri);
     
-  ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(saved, headers, HttpStatus.CREATED);
+  ResponseEntity<Spittle> responseEntity = new ResponseEntity<Spittle>(
+          saved, headers, HttpStatus.CREATED);
   return responseEntity;
 }
 ```
