@@ -61,3 +61,21 @@ eureka:
 ```
 
 通过这样的配置，Spring Cloud Gateway将能够注册到Eureka服务注册中心，并发现其他服务的实例。
+
+## 4. 配置 Actuator
+
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    gateway:
+      enabled: true
+```
+
+只有配置了 management.endpoint.gateway.enabled=true 后，才能够访问 gateway 相关的 actuator 端口。
