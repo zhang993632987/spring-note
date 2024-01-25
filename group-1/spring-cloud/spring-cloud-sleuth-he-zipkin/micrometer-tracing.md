@@ -32,16 +32,6 @@ logging:
 {% hint style="info" %}
 ## <mark style="color:blue;">提示</mark>
 
-If all of the following conditions are true, a **MicrometerObservationCapability** bean is created and registered so that your Feign client is observable by Micrometer:
-
-* feign-micrometer is on the classpath
-* A ObservationRegistry bean is available
-* feign micrometer properties are set to true (by default)
-  * spring.cloud.openfeign.micrometer.enabled=true (for all clients)
-  * spring.cloud.openfeign.client.config.feignName.micrometer.enabled=true (for a single client)
-
-If your application already uses Micrometer, enabling this feature is as simple as putting feign-micrometer onto your classpath:
-
 如果以下所有条件都为真，则会创建并注册一个 **MicrometerObservationCapability** bean，以便通过 Micrometer 观察到 Feign 客户端：
 
 * **feign-micrometer 在类路径上**
