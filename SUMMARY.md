@@ -43,6 +43,7 @@
     * [Redis Template](basic/spring-data/spring-data-redis/redis-template.md)
     * [操作 Redis 数据](basic/spring-data/spring-data-redis/cao-zuo-redis-shu-ju.md)
     * [key 和 value 的序列化器](basic/spring-data/spring-data-redis/key-he-value-de-xu-lie-hua-qi.md)
+    * [Redis 事务](basic/spring-data/spring-data-redis/redis-shi-wu.md)
 * [Spring Security](basic/spring-security/README.md)
   * [过滤 Web 请求](basic/spring-security/guo-lv-web-qing-qiu.md)
   * [编写简单的安全性配置](basic/spring-security/bian-xie-jian-dan-de-an-quan-xing-pei-zhi.md)
