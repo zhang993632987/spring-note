@@ -183,6 +183,7 @@
   * [oauth2](group-2/yu-dao-de-wen-ti/oauth2.md)
   * [在Spring Cloud Stream中混合使用avro和JSON](group-2/yu-dao-de-wen-ti/zai-spring-cloud-stream-zhong-hun-he-shi-yong-avro-he-json.md)
   * [Spring Cloud Stream 消费avro数据](group-2/yu-dao-de-wen-ti/spring-cloud-stream-xiao-fei-avro-shu-ju.md)
+  * [因为IDEA断点阻塞引起的一个乌龙](group-2/yu-dao-de-wen-ti/yin-wei-idea-duan-dian-zu-sai-yin-qi-de-yi-ge-wu-long.md)
 * [Spring如何解决循环依赖问题](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/README.md)
   * [Spring为什么不能解决构造器的循环依赖？](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/spring-wei-shi-mo-bu-neng-jie-jue-gou-zao-qi-de-xun-huan-yi-lai.md)
   * [Spring为什么不能解决prototype作用域循环依赖？](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/spring-wei-shi-mo-bu-neng-jie-jue-prototype-zuo-yong-yu-xun-huan-yi-lai.md)
@@ -192,3 +193,4 @@
   * [SpringBoot自动配置的原理](group-2/spring-boot-wen-ti/springboot-zi-dong-pei-zhi-de-yuan-li.md)
   * [Spring Boot的核心注解](group-2/spring-boot-wen-ti/spring-boot-de-he-xin-zhu-jie.md)
   * [SpringBoot 打成 jar 和普通的 jar 有什么区别？](group-2/spring-boot-wen-ti/springboot-da-cheng-jar-he-pu-tong-de-jar-you-shi-mo-qu-bie.md)
+* [Quartz](group-2/quartz.md)
