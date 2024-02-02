@@ -52,9 +52,16 @@ fetch.max.wait.ms: 500    # 最多等待 500ms
 
 <details>
 
-<summary></summary>
+<summary><mark style="color:purple;">Spring Boot 项目中可能存在的线程池</mark></summary>
 
+在一个Spring Boot项目中，可能会包含多个线程池，这些线程池用于执行不同的任务。以下是一些常见的Spring Boot项目中可能存在的线程池：
 
+1. **主线程池（Main Thread Pool）**：这是应用程序启动时创建的主要线程池，用于处理主要的业务逻辑。这通常是由Spring Boot自动配置的线程池，例如`TaskExecutor`。
+2. **异步方法线程池（Async Method Thread Pool）**：Spring Boot允许通过`@Async`注解实现异步方法，这些异步方法将在单独的线程中执行。默认情况下，Spring Boot会创建一个简单的线程池用于处理这些异步方法。
+3. **调度线程池（Scheduling Thread Pool）**：如果在应用程序中使用了Spring的定时任务（`@Scheduled`注解），则会有一个用于执行定时任务的线程池。
+4. **自定义线程池（Custom Thread Pools）**：在某些情况下，开发人员可能会自定义线程池来处理特定的任务或异步操作。
+5. **连接池（Connection Pool）**：虽然不是线程池，但在数据库访问方面，连接池也是一个常见的概念。Spring Boot应用程序通常会使用连接池来管理数据库连接，以提高性能。
+6. **Web服务器线程池（Web Server Thread Pool）**：如果你的Spring Boot应用程序是一个Web应用程序，那么底层的Web服务器（如Tomcat、Jetty或Undertow）也可能有自己的线程池用于处理HTTP请求。
 
 </details>
 
