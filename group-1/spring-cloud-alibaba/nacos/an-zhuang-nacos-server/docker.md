@@ -1,37 +1,13 @@
-# 安装 Nacos Server
+# Docker
 
-## Windows
-
-**Nacos 依赖 Java 环境运行，因此需要先保证安装了 Java 环境。**
-
-### 1. 下载安装包包
-
-地址：[https://github.com/alibaba/nacos/releases](https://github.com/alibaba/nacos/releases)
-
-### 2. 修改配置文件
-
-> **在 2.2.0.1 和 2.2.1 版本时，必须执行此变更，否则无法启动；其他版本为建议设置。**
-
-**修改 conf 目录下的application.properties文件，**设置其中的 nacos.core.auth.plugin.nacos.token.secret.key 值。
-
-### 3. 启动服务器
-
-```properties
-startup.cmd -m standalone
-```
-
-standalone 代表着单机模式运行。
-
-## Docker
-
-### 1. Clone 项目
+## 1. Clone 项目
 
 ```bash
 git clone https://github.com/nacos-group/nacos-docker.git
 cd nacos-docker
 ```
 
-### 2. 启动服务
+## 2. 启动服务
 
 {% hint style="success" %}
 单机模式 Derby：
@@ -98,6 +74,4 @@ docker compose -f example/cluster-hostname.yaml up
 | NACOS\_AUTH\_IDENTITY\_VALUE                  | nacos.core.auth.server.identity.value     | default : security                                                                                                                                                                                                 |
 | NACOS\_SECURITY\_IGNORE\_URLS                 | nacos.security.ignore.urls                | default : /,/error,/\*\*/\*.css,/\*\*/\*.js,/\*\*/\*.html,/\*\*/\*.map,/\*\*/\*.svg,/\*\*/\*.png,/\*\*/\*.ico,/console-fe/public/\*\*,/v1/auth/\*\*,/v1/console/health/\*\*,/actuator/\*\*,/v1/console/server/\*\* |
 
-## Nacos 控制台
-
-[http://127.0.0.1:8848/nacos/](http://127.0.0.1:8848/nacos/)
+##
