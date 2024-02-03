@@ -175,6 +175,18 @@
     * [Micrometer Tracing](group-1/spring-cloud/spring-cloud-sleuth-he-zipkin/micrometer-tracing.md)
     * [分布式追踪](group-1/spring-cloud/spring-cloud-sleuth-he-zipkin/fen-bu-shi-zhui-zong.md)
     * [日志聚合](group-1/spring-cloud/spring-cloud-sleuth-he-zipkin/ri-zhi-ju-he.md)
+* [Spring Cloud Alibaba](group-1/spring-cloud-alibaba/README.md)
+  * [版本说明](group-1/spring-cloud-alibaba/ban-ben-shuo-ming.md)
+  * [Nacos](group-1/spring-cloud-alibaba/nacos/README.md)
+    * [什么是 Nacos？](group-1/spring-cloud-alibaba/nacos/shi-mo-shi-nacos.md)
+    * [安装 Nacos Server](group-1/spring-cloud-alibaba/nacos/an-zhuang-nacos-server.md)
+    * [使用 Nacos Client](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/README.md)
+      * [服务注册与发现](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/fu-wu-zhu-ce-yu-fa-xian.md)
+      * [配置管理](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/pei-zhi-guan-li/README.md)
+        * [自定义 namespace 的配置](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/pei-zhi-guan-li/zi-ding-yi-namespace-de-pei-zhi.md)
+        * [自定义 Group 的配置](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/pei-zhi-guan-li/zi-ding-yi-group-de-pei-zhi.md)
+        * [自定义扩展的 Data Id 配置](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/pei-zhi-guan-li/zi-ding-yi-kuo-zhan-de-data-id-pei-zhi.md)
+        * [完全关闭配置](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/pei-zhi-guan-li/wan-quan-guan-bi-pei-zhi.md)
 
 ## Group 2
 
