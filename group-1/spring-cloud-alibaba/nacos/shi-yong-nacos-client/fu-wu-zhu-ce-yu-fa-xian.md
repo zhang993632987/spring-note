@@ -12,10 +12,18 @@
 
 ## 2. 配置
 
-在 `application.yml` 中配置 Nacos server 的地址：
+在 application.yml 中配置 Nacos server 的地址：
 
 ```yaml
-spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848
+############################## 服务注册 ##############################
+spring:
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: localhost:8848
+        namespace: public
 ```
 
 ## 3. 通过 @EnableDiscoveryClient 开启服务注册发现功能

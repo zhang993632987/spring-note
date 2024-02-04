@@ -14,9 +14,24 @@
 在 application.yml 中配置 Nacos Server 的地址和应用名：
 
 ```yaml
-spring.cloud.nacos.config.server-addr=127.0.0.1:8848
+spring:
+  application:
+    name: @artifactId@
+  profiles:
+    active: @profiles.active@
 
-spring.application.name=example
+---
+spring:
+  config:
+    import: nacos:${spring.application.name}.${spring.cloud.nacos.config.file-extension}?refresh=true
+  cloud:
+    nacos:
+      config:
+        username: nacos
+        password: nacos
+        server-addr: @nacos.addr@
+        file-extension: yml
+        namespace: @nacos.namespace@
 ```
 
 <mark style="color:blue;">**spring.application.name 是构成 Nacos 配置管理 dataId 字段的一部分。**</mark>
@@ -42,9 +57,9 @@ ${prefix}-${spring.profiles.active}.${file-extension}
 ## 3. 通过注解 @RefreshScope 实现配置自动更新
 
 ```java
+@RefreshScope
 @RestController
 @RequestMapping("/config")
-@RefreshScope
 public class ConfigController {
 
     @Value("${useLocalCache:false}")
