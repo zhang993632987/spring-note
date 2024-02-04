@@ -182,6 +182,7 @@
     * [安装 Nacos Server](group-1/spring-cloud-alibaba/nacos/an-zhuang-nacos-server/README.md)
       * [Windows](group-1/spring-cloud-alibaba/nacos/an-zhuang-nacos-server/windows.md)
       * [Docker](group-1/spring-cloud-alibaba/nacos/an-zhuang-nacos-server/docker.md)
+    * [与 Spring Cloud Gateway 集成](group-1/spring-cloud-alibaba/nacos/yu-spring-cloud-gateway-ji-cheng.md)
     * [使用 Nacos Client](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/README.md)
       * [服务注册与发现](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/fu-wu-zhu-ce-yu-fa-xian.md)
       * [配置管理](group-1/spring-cloud-alibaba/nacos/shi-yong-nacos-client/pei-zhi-guan-li/README.md)
