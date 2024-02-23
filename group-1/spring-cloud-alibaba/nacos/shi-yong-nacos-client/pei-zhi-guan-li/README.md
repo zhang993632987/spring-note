@@ -11,7 +11,7 @@
 
 ## 2. 配置
 
-在 application.yml 中配置 Nacos Server 的地址和应用名：
+在 **application.yml** 中配置 Nacos Server 的地址和应用名：
 
 ```yaml
 spring:
@@ -51,7 +51,7 @@ ${prefix}-${spring.profiles.active}.${file-extension}
 {% hint style="warning" %}
 ## <mark style="color:orange;">注意</mark>
 
-**与 Spring Cloud Config 一样，spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以 dataId 为 ${spring.application.name}.${file-extension:properties} 为前缀的基础配置，还加载了dataId为 ${spring.application.name}-${profile}.${file-extension:properties} 的基础配置。**
+**与 Spring Cloud Config 一样，spring-cloud-starter-alibaba-nacos-config 在加载配置的时候，不仅仅加载了以 dataId 为 ${spring.application.name}.${file-extension:properties} 为前缀的基础配置，还加载了 dataId 为 ${spring.application.name}-${profile}.${file-extension:properties} 的基础配置。**
 {% endhint %}
 
 ## 3. 通过注解 @RefreshScope 实现配置自动更新
@@ -71,3 +71,28 @@ public class ConfigController {
     }
 }
 ```
+
+## <mark style="color:orange;">注意</mark>
+
+**如果想要完整地利用 nacos 相关的配置，必须将所有配置放在 **<mark style="color:orange;">**bootstrap.yml**</mark>** 或 **<mark style="color:orange;">**bootstrap.properties**</mark>** 文件中，并且必须引入 bootstrap 相关依赖（或者通过将系统环境变量 spring.cloud.bootstrap.enabled 设为 true）：**
+
+```xml
+<dependency>
+   <groupId>org.springframework.cloud</groupId>
+   <artifactId>spring-cloud-starter-bootstrap</artifactId>
+</dependency>
+```
+
+<mark style="color:orange;">**只有这样，才能够省略 spring.config.import 配置，进而充分利用 nacos 特定的配置。**</mark>
+
+> ## **spring cloud config 文档中的原文如下：**
+>
+> <mark style="background-color:blue;">Unless you are using</mark> <mark style="background-color:blue;"></mark><mark style="background-color:blue;">**config first bootstrap**</mark><mark style="background-color:blue;">, you will need to have a spring.config.import property in your configuration properties with an optional: prefix.</mark> For example:
+>
+> ```properties
+> spring.config.import=optional:configserver:
+> ```
+>
+> ### Config First Bootstrap <a href="#config-first-bootstrap" id="config-first-bootstrap"></a>
+>
+> To use the legacy bootstrap way of connecting to Config Server, <mark style="background-color:blue;">**bootstrap must be enabled via a property or the spring-cloud-starter-bootstrap starter.**</mark> The property is spring.cloud.bootstrap.enabled=true. It must be set as a System Property or environment variable.

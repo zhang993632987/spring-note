@@ -54,5 +54,3 @@ spring.cloud.nacos.config.shared-configs[0].refresh=true
 * 通过 spring.cloud.nacos.config.shared-configs\[n].data-id 来支持多个共享 Data Id 的配置。
 * 通过 spring.cloud.nacos.config.shared-configs\[n].group 来配置自定义 Data Id 所在的组，不明确配置的话，默认是 DEFAULT\_GROUP。
 * 通过 spring.cloud.nacos.config.shared-configs\[n].refresh 来控制该 Data Id 在配置变更时，是否支持应用中动态刷新，默认 false。
-
-#### &#x20;<a href="#usercontent-pei-zhi-de-you-xian-ji" id="usercontent-pei-zhi-de-you-xian-ji"></a>

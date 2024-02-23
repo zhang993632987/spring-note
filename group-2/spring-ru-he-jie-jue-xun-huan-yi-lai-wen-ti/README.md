@@ -1,4 +1,4 @@
-# Spring如何解决循环依赖问题
+# Spring 如何解决循环依赖问题
 
 {% hint style="warning" %}
 ## <mark style="color:orange;">注意</mark>
@@ -62,7 +62,7 @@ getSingleton() 方法的逻辑如下：
 
 1. 首先从一级缓存 singletonObjects 中获取 Bean 对象；
 2. 若获取不到且对象正在建立中，再从二级缓存 earlySingletonObjects 中进行获取；
-3. 若是仍是获取不到且容许通过 singletonFactory.getObject() 获取，就从三级缓存singletonFactory(三级缓存)获取单例工厂对象，调用工厂对象的 getObject 方法构造对象，并将构造完成的对象放入二级缓存中。
+3. 若是仍是获取不到且容许通过 singletonFactory.getObject() 获取，就从三级缓存 singletonFactory (三级缓存)获取单例工厂对象，调用工厂对象的 getObject 方法构造对象，并将构造完成的对象放入二级缓存中。
 
 Spring 解决循环依赖的关键就在于 singletonFactories 这个三级缓存，缓存中保存的对象是 ObjectFactory 接口类型，该接口定义如下：
 
