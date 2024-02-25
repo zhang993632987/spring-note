@@ -88,7 +88,9 @@ public class Audience {
 
 在 Audience 中，performance() 方法使用了 @Pointcut 注解。**为 @Pointcut 注解设置的值是一个切点表达式**，就像之前在通知注解上所设置的那样。
 
-> 需要注意的是，**除了注解和没有实际操作的 performance() 方法，Audience 类依然是一个 POJO**。我们**能够像使用其他的 Java 类那样调用它的方法，它的方法也能够独立地进行单元测试**，这与其他的 Java 类并没有什么区别。Audience 只是一个 Java 类，只不过它通过注解表明会作为切面使用而已。
+> 需要注意的是，**除了注解和没有实际操作的 performance() 方法，Audience 类依然是一个 POJO**。
+>
+> 我们**能够像使用其他的 Java 类那样调用它的方法，它的方法也能够独立地进行单元测试**，这与其他的 Java 类并没有什么区别。Audience 只是一个 Java 类，只不过它通过注解表明会作为切面使用而已。
 
 像其他的 Java 类一样，它可以装配为 Spring 中的 bean：
 

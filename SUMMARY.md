@@ -4,10 +4,10 @@
 
 * [Spring Core](README.md)
   * [依赖注入（DI）](basic/core/1.-yi-lai-zhu-ru-di/README.md)
-    * [Spring容器](basic/core/1.-yi-lai-zhu-ru-di/1.1-spring-rong-qi.md)
+    * [Spring 容器](basic/core/1.-yi-lai-zhu-ru-di/1.1-spring-rong-qi.md)
     * [装配](basic/core/1.-yi-lai-zhu-ru-di/1.2-zhuang-pei.md)
-    * [bean的作用域](basic/core/1.-yi-lai-zhu-ru-di/1.3-bean-de-zuo-yong-yu.md)
-  * [bean的生命周期](basic/core/2-bean-de-sheng-ming-zhou-qi.md)
+    * [bean 的作用域](basic/core/1.-yi-lai-zhu-ru-di/1.3-bean-de-zuo-yong-yu.md)
+  * [bean 的生命周期](basic/core/2-bean-de-sheng-ming-zhou-qi.md)
   * [面向切面编程（AOP）](basic/core/3-mian-xiang-qie-mian-bian-cheng-aop/README.md)
     * [AOP 术语](basic/core/3-mian-xiang-qie-mian-bian-cheng-aop/aop-shu-yu.md)
     * [Spring 对 AOP 的支持](basic/core/3-mian-xiang-qie-mian-bian-cheng-aop/spring-dui-aop-de-zhi-chi.md)
