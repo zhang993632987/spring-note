@@ -205,6 +205,7 @@
 * [Spring 如何解决循环依赖问题](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/README.md)
   * [Spring 为什么不能解决构造器的循环依赖？](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/spring-wei-shi-mo-bu-neng-jie-jue-gou-zao-qi-de-xun-huan-yi-lai.md)
   * [Spring 为什么不能解决 prototype 作用域循环依赖？](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/spring-wei-shi-mo-bu-neng-jie-jue-prototype-zuo-yong-yu-xun-huan-yi-lai.md)
+  * [为什么要使用三级缓存呢？二级缓存能解决循环依赖吗？](group-2/spring-ru-he-jie-jue-xun-huan-yi-lai-wen-ti/wei-shi-mo-yao-shi-yong-san-ji-huan-cun-ni-er-ji-huan-cun-neng-jie-jue-xun-huan-yi-lai-ma.md)
 * [Spring 框架中用到了哪些设计模式？](group-2/spring-kuang-jia-zhong-yong-dao-le-na-xie-she-ji-mo-shi.md)
 * [Spring 事务](group-2/spring-shi-wu.md)
 * [spring boot 问题](group-2/spring-boot-wen-ti/README.md)
