@@ -1,6 +1,6 @@
 # 集成docker
 
-## 1. 添加docker的Maven插件
+## 1. 添加 docker 的  Maven插件
 
 ```xml
 <plugin>
@@ -17,7 +17,7 @@
 </plugin>
 ```
 
-## 2. 添加docker.image.prefix属性值
+## 2. 添加 docker.image.prefix 属性值
 
 ```xml
 <properties>
@@ -25,12 +25,12 @@
 </properties>
 ```
 
-除了直接在pom.xml中定义外，还可以在执行maven命令时通过 **-d** 传递docker.image.prefix属性值。
+除了直接在 pom.xml 中定义外，还可以在执行 maven 命令时通过 **-d** 传递 docker.image.prefix 属性值。
 
-## 3. 编写Dockerfile
+## 3. 编写 Dockerfile
 
 {% hint style="warning" %}
-Dockerfile文件的存放路径与pom.xml同级！
+Dockerfile 文件的存放路径与 pom.xml 同级！
 
 <img src="../../../.gitbook/assets/image (5) (1) (1) (1).png" alt="" data-size="original">
 {% endhint %}
@@ -69,7 +69,7 @@ ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
 
 ## 4. 构建镜像
 
-执行**mvn clean package dockerfile:build**命令构建镜像。
+执行 **mvn clean package dockerfile:build** 命令构建镜像。
 
 ## 5. 生成容器
 

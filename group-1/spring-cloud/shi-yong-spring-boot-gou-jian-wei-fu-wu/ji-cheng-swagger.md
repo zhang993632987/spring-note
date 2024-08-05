@@ -1,8 +1,8 @@
-# 集成swagger
+# 集成 swagger
 
-参考knife4j的官网文档：[https://doc.xiaominfo.com/docs/quick-start](https://doc.xiaominfo.com/docs/quick-start)
+参考 knife4j 的官网文档：[https://doc.xiaominfo.com/docs/quick-start](https://doc.xiaominfo.com/docs/quick-start)
 
-## 1. 引入Maven依赖
+## 1. 引入 Maven 依赖
 
 ```xml
 <dependency>
@@ -12,7 +12,7 @@
 </dependency>
 ```
 
-## 2. 配置application.yml
+## 2. 配置 application.yml
 
 ```yaml
 ############################## Swagger ##############################
@@ -36,4 +36,4 @@ knife4j:
 
 ## 3. 测试
 
-访问[http://localhost:8080/doc.html](http://localhost:8080/doc.html)
+访问 [http://localhost:8080/doc.html](http://localhost:8080/doc.html)

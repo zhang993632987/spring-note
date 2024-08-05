@@ -15,8 +15,8 @@
 
 开发人员如何与服务进行通信？第一步是定义需要同步协议还是异步协议。
 
-* 对于同步协议，最常见的协议是基于HTTP的REST，使用XML、JSON或诸如Thrift之类的二进制协议来与微服务来回传输数据。
-* 对于异步协议，最流行的协议是高级消息队列协议（Advanced Message Queuing Protocol，AMQP），使用一对一（队列）或一对多（主题）的消息代理，如RabbitMQ、Apache Kafka和Amazon简单队列服务（Simple Queue Service，SQS）。
+* 对于同步协议，最常见的协议是基于 HTTP 的 REST，使用 XML、JSON 或诸如 Thrift 之类的二进制协议来与微服务来回传输数据。
+* 对于异步协议，最流行的协议是高级消息队列协议（Advanced Message Queuing Protocol，AMQP），使用一对一（队列）或一对多（主题）的消息代理，如 RabbitMQ、Apache Kafka 和 Amazon 简单队列服务（Simple Queue Service，SQS）。
 
 ### <mark style="color:blue;">**接口设计**</mark>
 
@@ -28,4 +28,4 @@
 
 ### <mark style="color:blue;">**服务之间的事件处理**</mark>
 
-如何使用事件解耦微服务，才能最小化服务之间的硬编码依赖关系，并提高应用程序的弹性？答案是<mark style="color:orange;">**使用Spring Cloud Stream的事件驱动架构**</mark>。
+如何使用事件解耦微服务，才能最小化服务之间的硬编码依赖关系，并提高应用程序的弹性？答案是<mark style="color:orange;">**使用Spring Cloud Stream 的事件驱动架构**</mark>。

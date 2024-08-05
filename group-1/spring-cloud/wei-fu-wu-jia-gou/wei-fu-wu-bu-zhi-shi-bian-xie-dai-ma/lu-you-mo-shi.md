@@ -10,5 +10,4 @@
 
 ### <mark style="color:blue;">**服务路由**</mark>
 
-通过API网关，可以为所有服务提供单个入口点，以便将<mark style="color:orange;">**安全策略**</mark>和<mark style="color:orange;">**路由规则**</mark>统一应用于微服务应用程序中的多个服务和服务实例。
-
+通过 API 网关，可以为所有服务提供单个入口点，以便将<mark style="color:orange;">**安全策略**</mark>和<mark style="color:orange;">**路由规则**</mark>统一应用于微服务应用程序中的多个服务和服务实例。

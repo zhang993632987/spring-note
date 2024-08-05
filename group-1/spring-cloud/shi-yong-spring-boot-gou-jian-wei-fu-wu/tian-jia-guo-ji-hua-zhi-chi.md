@@ -1,6 +1,6 @@
 # 添加国际化支持
 
-## 1. 配置locale
+## 1. 配置 locale
 
 ```properties
 spring:
@@ -9,9 +9,9 @@ spring:
     locale-resolver: accept_header
 ```
 
-spring boot默认使用<mark style="color:blue;">**AcceptHeaderLocaleResolver**</mark>支持国际化。
+> spring boot 默认使用 <mark style="color:blue;">**AcceptHeaderLocaleResolver**</mark> 支持国际化。
 
-## 2. 在/src/main/resources源文件夹下创建以下文件：
+## 2. 在 /src/main/resources 源文件夹下创建以下文件：
 
 *   messages.properties
 
@@ -35,7 +35,7 @@ spring boot默认使用<mark style="color:blue;">**AcceptHeaderLocaleResolver**<
     license.delete.message=删除组织 %s 下的id为 %s 的许可证
     ```
 
-## 3. 修改Controller
+## 3. 修改 Controller
 
 ```java
 @PostMapping
@@ -60,7 +60,7 @@ public String deleteLicense(
 }
 ```
 
-## 4. 修改Service接口和实现
+## 4. 修改 Service 接口和实现
 
 {% code overflow="wrap" %}
 ```java
@@ -105,4 +105,4 @@ public String deleteLicense(String licenseId, String organizationId) {
 
 <figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-国际化的关键在于<mark style="color:blue;">**Accept-Language**</mark>请求头！
+**国际化的关键在于 **<mark style="color:blue;">**Accept-Language**</mark>** 请求头！**

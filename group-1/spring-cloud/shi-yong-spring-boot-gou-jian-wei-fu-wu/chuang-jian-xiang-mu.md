@@ -2,7 +2,7 @@
 
 ## 1. 新建项目
 
-使用Spring Initializer，选择Spring Boot DevTools、Lombok、Spring Web和Spring Boot Actuator，生成项目的pom.xml的核心文件内容如下：
+使用 Spring Initializer，选择 **Spring Boot DevTools**、**Lombok**、**Spring Web** 和 **Spring Boot Actuator**，生成项目的 pom.xml 的核心文件内容如下：
 
 ```xml
 <dependency>
@@ -32,7 +32,7 @@
 </dependency>
 ```
 
-## 2.创建实例类License
+## 2.创建实例类 License
 
 ```java
 package com.study.license.entity;
@@ -138,7 +138,7 @@ public class LicenseServiceImpl implements LicenseService {
 ```
 {% endcode %}
 
-## 4. 创建控制器Controller
+## 4. 创建控制器 Controller
 
 ```java
 package com.study.license.controller;
@@ -175,7 +175,7 @@ public class LicenseController {
 }
 ```
 
-## 5. 配置application.yml
+## 5. 配置 application.yml
 
 ```properties
 server:

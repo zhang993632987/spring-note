@@ -1,6 +1,6 @@
 # 十二要素应用程序最佳实践
 
-为了应对创建云原生微服务的挑战，我们将使用Heroku的最佳实践指南，称为<mark style="color:blue;">**十二要素应用程序（twelve-factor app）**</mark>，来构建高质量的微服务。可以将此方法视为开发和设计实践的集合，这些实践在构建分布式服务时侧重于**动态扩展**和**基本点**。
+为了应对创建云原生微服务的挑战，我们将使用 Heroku 的最佳实践指南（称为<mark style="color:blue;">**十二要素应用程序**</mark>）<mark style="color:blue;">**（twelve-factor app）**</mark>，来构建高质量的微服务。可以将此方法视为开发和设计实践的集合，这些实践在构建分布式服务时侧重于**动态扩展**和**基本点**。
 
 ### <mark style="color:blue;">代码库</mark>
 
@@ -10,9 +10,9 @@
 
 ### <mark style="color:blue;">依赖</mark>
 
-此最佳实践<mark style="color:orange;">**通过构建工具（如Maven或Gradle（Java））显式声明应用程序使用的依赖项**</mark>。
+此最佳实践<mark style="color:orange;">**通过构建工具（如 Maven 或 Gradle）显式声明应用程序使用的依赖项**</mark>。
 
-第三方JAR依赖项应该使用它们的特定版本号来声明。这允许你始终使用相同的库版本构建微服务。
+第三方 JAR 依赖项应该使用它们的特定版本号来声明。这允许你始终使用相同的库版本构建微服务。
 
 ### <mark style="color:blue;">配置</mark>
 
@@ -20,7 +20,7 @@
 
 ### <mark style="color:blue;">后端服务</mark>
 
-微服务通常会通过网络与数据库、API RESTful服务、其他服务器或消息传递系统进行通信。当这样做时，你<mark style="color:orange;">**应该确保可以在本地和第三方连接之间替换部署实现，而不需要对应用程序代码进行任何更改**</mark>。
+微服务通常会通过网络与数据库、API RESTful 服务、其他服务器或消息传递系统进行通信。当这样做时，你<mark style="color:orange;">**应该确保可以在本地和第三方连接之间替换部署实现，而不需要对应用程序代码进行任何更改**</mark>。
 
 ### <mark style="color:blue;">构建、运行和发布</mark>
 
@@ -36,13 +36,13 @@
 
 微服务可以随时终止和替换，而不必担心服务实例的丢失会导致数据丢失。
 
-<mark style="color:orange;">**如果有存储状态的特定要求，则必须通过内存缓存（如Redis）或后端数据库来完成。**</mark>
+<mark style="color:orange;">**如果有存储状态的特定要求，则必须通过内存缓存（如 Redis）或后端数据库来完成。**</mark>
 
 ### <mark style="color:blue;">端口绑定</mark>
 
 <mark style="color:orange;">**端口绑定意味着通过特定端口发布服务**</mark>。
 
-在微服务架构中，微服务在打包的时候应该是完全独立的，可运行的微服务中要包含一个运行时引擎。运行服务时不需要单独的Web或应用程序服务器。服务应该在命令行上自行启动，并且可通过公开的HTTP端口立即访问。
+在微服务架构中，微服务在打包的时候应该是完全独立的，可运行的微服务中要包含一个运行时引擎。运行服务时不需要单独的 Web 或应用程序服务器。服务应该在命令行上自行启动，并且可通过公开的 HTTP 端口立即访问。
 
 ### <mark style="color:blue;">并发</mark>
 
@@ -68,7 +68,7 @@
 
 ### <mark style="color:blue;">日志</mark>
 
-<mark style="color:orange;">**在写入日志时，应该通过Logstash或Fluentd等工具来管理日志，这些工具收集日志并将它们写到一个集中位置**</mark>。
+<mark style="color:orange;">**在写入日志时，应该通过 Logstash 或 Fluentd 等工具来管理日志，这些工具收集日志并将它们写到一个集中位置**</mark>。
 
 微服务永远不应该关心这是如何发生的，它只需要专注于将日志条目写入标准输出（stdout）。
 
