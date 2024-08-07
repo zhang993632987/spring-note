@@ -33,11 +33,15 @@ spring:
   profiles: peer3
 ```
 
-通过设定<mark style="color:blue;">**spring.profiles.active**</mark>参数启动三个eureka服务端构成一个三节点的集群。
+通过设定 <mark style="color:blue;">**spring.profiles.active**</mark> 参数启动三个 eureka 服务端构成一个三节点的集群。
 
 <figure><img src="../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-> Eureka服务端会将服务信息保存在内存之中，当以集群模式运行时，每一个Eureka服务端都会存在完整的服务信息，Eureka服务之间通过点对点的方式进行信息的同步。
+{% hint style="success" %}
+* Eureka 服务端会将服务信息保存在内存之中
+* 当以集群模式运行时，每一个 Eureka 服务端都会存在完整的服务信息
+* Eureka 服务之间通过点对点的方式进行信息的同步。
+{% endhint %}
 
 ## 客户端
 

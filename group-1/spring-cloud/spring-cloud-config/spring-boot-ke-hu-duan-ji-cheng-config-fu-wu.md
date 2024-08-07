@@ -1,6 +1,6 @@
-# Spring Boot客户端集成Config服务
+# Spring Boot 客户端集成 Config 服务
 
-## 1. 增加Maven依赖
+## 1. 增加 Maven 依赖
 
 ```xml
 <dependency>
@@ -9,9 +9,9 @@
 </dependency>
 ```
 
-## 2. application.yml配置文件
+## 2. application.yml 配置文件
 
-在定义了Maven依赖项后，我们需要告知微服务在哪里与Spring Cloud Config服务器端进行联系。
+在定义了 Maven 依赖项后，我们需要告知微服务在哪里与 Spring Cloud Config 服务器端进行联系。
 
 ```yaml
 spring:
@@ -26,12 +26,12 @@ spring:
     import: 'optional:configserver:'
 ```
 
-* **spring.application.name**是应用程序的名称，必须直接映射到Spring Cloud Config服务器端中的配置文件的名称。
-* **spring.profiles.active**用于告诉Spring Boot应用程序应该运行哪个profile。
-* **spring.cloud.config.uri**是Config服务器端端点的位置。
+* **spring.application.name** 是应用程序的名称，必须直接映射到 Spring Cloud Config 服务器端中的配置文件的名称。
+* **spring.profiles.active** 用于告诉 Spring Boot 应用程序应该运行哪个 profile。
+* **spring.cloud.config.uri** 是 Config 服务器端端点的位置。
 * **spring.config.import=**optional:configserver:
 
-> 如果要覆盖这些默认值，可以通过将客户端服务项目编译并打包到JAR文件，然后使用<mark style="color:blue;">**-D**</mark>系统属性来运行这个JAR文件来实现：
+> 如果要覆盖这些默认值，可以通过将客户端服务项目编译并打包到 JAR 文件，然后使用 <mark style="color:blue;">**-D**</mark> 系统属性来运行这个 JAR 文件来实现：
 >
 > ```bash
 > java -Dspring.cloud.config.uri=http://localhost:8071 \

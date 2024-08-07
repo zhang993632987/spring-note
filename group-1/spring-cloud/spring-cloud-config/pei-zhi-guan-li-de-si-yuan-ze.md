@@ -2,21 +2,21 @@
 
 ### <mark style="color:blue;">分离</mark>
 
-将服务**配置信息**与服务的**实际物理部署**完全<mark style="color:blue;">**分开**</mark>。
+将服务**配置信息**与服务的**实际物理部署**完全<mark style="color:blue;">**分开**</mark><mark style="color:blue;">**，应用程序配置不应与服务实例一起部署**</mark>。
 
-<mark style="color:blue;">**应用程序配置不应与服务实例一起部署**</mark>。相反，配置信息应该作为**环境变量**传递给正在启动的服务，或者在服务启动时从**集中式存储库**中读取。
+> 配置信息应该作为**环境变量**传递给正在启动的服务，或者在服务启动时从**集中式存储库**中读取。
 
 ### <mark style="color:blue;">抽象</mark>
 
 将**访问配置数据**的功能<mark style="color:blue;">**抽象**</mark>到一个**服务接口**中。
 
-应该使用基于REST的JSON服务来检索应用程序的配置数据，而不是编写直接读取服务存储库（无论是基于文件的还是JDBC数据库）的代码。
+> 应该使用基于 REST 的 JSON 服务来检索应用程序的配置数据，而不是编写直接读取服务存储库（无论是基于文件的还是 JDBC 数据库）的代码。
 
 ### <mark style="color:blue;">集中</mark>
 
 因为基于云的应用程序实际可能会有数百个服务，所以最小化用于保存配置信息的存储库的数量至关重要。
 
-要将应用程序配置<mark style="color:blue;">**集中**</mark>在尽可能少的存储库中。
+> 要将应用程序配置<mark style="color:blue;">**集中**</mark>在尽可能少的存储库中。
 
 ### <mark style="color:blue;">稳定</mark>
 
