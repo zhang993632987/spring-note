@@ -17,9 +17,3 @@
 | **@annotation** | 限定匹配**带有指定注解的连接点**                                           |
 
 在 Spring 中尝试使用 AspectJ 其他指示器时，将会抛出 **IllegalArgumentException** 异常。
-
-{% hint style="warning" %}
-## <mark style="color:orange;">注意</mark>
-
-**Spring 支持的指示器中，只有 execution 指示器是实际执行匹配的，而其他的指示器都是用来限制匹配的。**
-{% endhint %}

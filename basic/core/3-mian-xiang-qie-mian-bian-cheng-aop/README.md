@@ -1,6 +1,6 @@
 # 面向切面编程（AOP）
 
-<mark style="color:blue;">**DI 能够让相互协作的组件保持松散耦合，而面向切面编程（aspect-oriented programming，AOP）允许你把遍布应用各处的功能分离出来形成可重用的组件。**</mark>
+<mark style="color:blue;">**DI 能够让相互协作的组件保持松散耦合，而面向切面编程（aspect-oriented programming，AOP）允许我们把遍布应用各处的功能分离出来形成可重用的组件。**</mark>
 
 <mark style="color:blue;">**面向切面编程往往被定义为促使软件系统实现关注点的分离一项技术**</mark>。系统由许多不同的组件组成，每一个组件各负责一块特定功能。除了实现自身核心的功能之外，这些组件还经常承担着额外的职责。诸如日志、事务管理和安全这样的系统服务经常融入到自身具有核心业务逻辑的组件中去，这些系统服务通常被称为<mark style="color:blue;">**横切关注点**</mark>，因为它们会跨越系统的多个组件。
 

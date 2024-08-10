@@ -2,7 +2,7 @@
 
 <details>
 
-<summary><mark style="color:purple;">切面：Audience 类</mark></summary>
+<summary><mark style="color:purple;"><strong>切面：Audience 类</strong></mark></summary>
 
 ```java
 package concert;
@@ -39,13 +39,13 @@ public class Audience {
 
 </details>
 
-Audience 类使用 <mark style="color:blue;">**@AspectJ 注解**</mark>进行了标注。<mark style="color:blue;">**该注解表明 Audience 不仅仅是一个 POJO，还是一个切面**</mark>。Audience 类中的方法都使用注解来定义切面的具体行为。
+Audience 类使用 <mark style="color:blue;">**@Aspect 注解**</mark>进行了标注。<mark style="color:blue;">**该注解表明 Audience 不仅仅是一个 POJO，还是一个切面**</mark>。Audience 类中的方法都使用注解来定义切面的具体行为。
 
-**@Pointcut 注解能够在一个 @AspectJ 切面内定义可重用的切点。**
+**@Pointcut 注解能够在一个 @Aspect 切面内定义可重用的切点。**
 
 <details>
 
-<summary><mark style="color:purple;">通过 <strong>@Pointcut 注解声明频繁使用的切点表达式</strong></mark></summary>
+<summary><mark style="color:purple;"><strong>通过 @Pointcut 注解声明频繁使用的切点表达式</strong></mark></summary>
 
 ```java
 package concert;
@@ -107,7 +107,7 @@ public Audience audience() {
 
 <details>
 
-<summary><mark style="color:purple;">在 JavaConfig 中启用 AspectJ 注解的自动代理</mark></summary>
+<summary><mark style="color:purple;"><strong>在 JavaConfig 中启用 AspectJ 注解的自动代理</strong></mark></summary>
 
 ```java
 package concert;
@@ -119,7 +119,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
 @EnableAspectJAutoProxy
-@Component
 public class ConcertConfig {
 
   @Bean
@@ -132,7 +131,3 @@ public class ConcertConfig {
 </details>
 
 **AspectJ 自动代理会为使用 @Aspect 注解的 bean 创建一个代理，这个代理会围绕着所有该切面的切点所匹配的 bean**。在本例中，将会为 Concert bean 创建一个代理，Audience 类中的通知方法将会在 perform() 调用前后执行。
-
-> ## 需要记住的是：
->
-> Spring 的 AspectJ 自动代理仅仅使用 @AspectJ 作为创建切面的指导，切面依然是基于代理的。在本质上，它依然是 Spring 基于代理的切面。

@@ -2,7 +2,7 @@
 
 <details>
 
-<summary><mark style="color:purple;">参数化的通知</mark></summary>
+<summary><mark style="color:purple;"><strong>参数化的通知</strong></mark></summary>
 
 ```java
 package soundsystem;

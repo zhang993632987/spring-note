@@ -17,7 +17,7 @@ execution(* concert.Performance.perform(..))
 execution(* concert.Performance.perform(..)) && within("concert.*")
 ```
 
-> ## 逻辑运算符：
+> 逻辑运算符：
 >
 > * **"&&" 和 "and"**：表示与（and）关系。因为 "&" 在 XML 中有特殊含义，所以在 Spring 的 XML 配置里面描述切点时，应该使用 and 来代替 "&&"。
 > * **"||" 和 "or"**：表示或（or）关系。

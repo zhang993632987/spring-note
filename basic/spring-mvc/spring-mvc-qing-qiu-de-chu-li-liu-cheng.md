@@ -4,11 +4,11 @@
 
 如上图所示，Spring MVC 请求的处理流程如下：
 
-1. 在请求<mark style="color:blue;">**离开浏览器**</mark>时，会带有用户所请求的内容信息，至少会包含请求的URL。同时还可能带有其他的信息，例如用户提交的表单信息。
+1. 在请求<mark style="color:blue;">**离开浏览器**</mark>时，会带有用户所请求的内容信息，至少会包含请求的 URL。同时还可能带有其他的信息，例如用户提交的表单信息。
 2.  请求旅程的第一站是 Spring 的 <mark style="color:blue;">**DispatcherServlet**</mark>。Spring MVC 的所有请求都会通过一个<mark style="color:blue;">**前端控制器**</mark>（front controller）Servlet。
 
-    > 前端控制器是常用的 Web 应用程序模式，在Spring MVC中，DispatcherServlet就是前端控制器。
-3. DispatcherServlet 的任务是将请求发送给Spring MVC控制器（controller），控制器是一个用于处理请求的 Spring 组件。
+    > 前端控制器是常用的 Web 应用程序模式，在 Spring MVC 中，DispatcherServlet 就是前端控制器。
+3. DispatcherServlet 的任务是将请求发送给 Spring MVC 控制器（controller），控制器是一个用于处理请求的 Spring 组件。
    * DispatcherServlet 需要知道应该将请求发送给哪个控制器，所以 DispatcherServlet 会查询一个或多个<mark style="color:blue;">**处理器映射（handler mapping）**</mark>来确定请求的下一站在哪里。
    * 处理器映射会根据请求所携带的 URL 信息来进行决策。
 4. 一旦选择了合适的控制器，DispatcherServlet 会将请求发送给选中的<mark style="color:blue;">**控制器**</mark>。到了控制器，请求会卸下其负载（用户提交的信息）并耐心地等待控制器处理这些信息。

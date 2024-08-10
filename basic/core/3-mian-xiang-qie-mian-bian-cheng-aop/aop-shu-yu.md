@@ -1,12 +1,10 @@
 # AOP 术语
 
-**通知**包含了需要用于多个应用对象的横切行为；**连接点**是程序执行过程中能够应用通知的所有点；**切点**定义了通知被应用的具体位置（在哪些连接点）。其中关键的概念是**切点定义了哪些连接点会得到通知。**
-
 ## 通知（Advice）
 
 在 AOP 中，切面的工作被称为通知（Advice）。
 
-<mark style="background-color:blue;">**通知定义了切面是什么以及何时使用。除了描述切面要完成的工作，通知还解决了何时执行这个工作的问题。**</mark>
+<mark style="background-color:blue;">**通知定义了切面是**</mark><mark style="color:blue;background-color:blue;">**什么**</mark><mark style="background-color:blue;">**以及**</mark><mark style="color:blue;background-color:blue;">**何时**</mark><mark style="background-color:blue;">**使用。除了描述切面要完成的工作，通知还解决了何时执行这个工作的问题。**</mark>
 
 Spring 切面可以应用 5 种类型的通知：
 
